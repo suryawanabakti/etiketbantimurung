@@ -27,13 +27,13 @@ export default function BookingSummary({
     formatCurrency
 }: BookingSummaryProps) {
     return (
-        <Card className="rounded-[40px] md:rounded-[48px] border-none shadow-2xl shadow-rose-900/10 overflow-hidden lg:sticky lg:top-24">
-            <CardHeader className="bg-rose-600 text-white p-8 md:p-10">
+        <Card className="rounded-[40px] md:rounded-[48px] border-none shadow-2xl shadow-red-900/10 overflow-hidden lg:sticky lg:top-24">
+            <CardHeader className="bg-red-800 text-white p-8 md:p-10">
                 <CardTitle className="text-2xl md:text-3xl font-black flex items-center gap-4 uppercase italic tracking-tighter">
                     <CreditCard className="w-6 h-6 md:w-8 md:h-8" />
                     Detail Pesanan
                 </CardTitle>
-                <CardDescription className="text-rose-100 text-sm md:text-lg opacity-80 mt-2 font-medium">Selesaikan pembayaran untuk akses masuk.</CardDescription>
+                <CardDescription className="text-red-100 text-sm md:text-lg opacity-80 mt-2 font-medium">Selesaikan pembayaran untuk akses masuk.</CardDescription>
             </CardHeader>
             <CardContent className="p-8 md:p-10 space-y-8 md:space-y-10 bg-white">
                 {selectedTiket ? (
@@ -48,7 +48,7 @@ export default function BookingSummary({
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        className="h-12 w-12 text-rose-600 hover:bg-rose-50 rounded-xl transition-all active:scale-90"
+                                        className="h-12 w-12 text-red-800 hover:bg-red-50 rounded-xl transition-all active:scale-90"
                                         onClick={() => setJumlah(Math.max(1, jumlah - 1))}
                                         disabled={jumlah <= 1}
                                     >
@@ -61,7 +61,7 @@ export default function BookingSummary({
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        className="h-12 w-12 text-rose-600 hover:bg-rose-50 rounded-xl transition-all active:scale-90"
+                                        className="h-12 w-12 text-red-800 hover:bg-red-50 rounded-xl transition-all active:scale-90"
                                         onClick={() => setJumlah(Math.min(selectedTiket.kuota, jumlah + 1))}
                                         disabled={jumlah >= selectedTiket.kuota}
                                     >
@@ -81,13 +81,13 @@ export default function BookingSummary({
                                 </div>
                                 <div className="pt-4 flex justify-between items-end">
                                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Total Bayar</span>
-                                    <span className="text-4xl md:text-5xl font-black text-rose-600 tracking-tighter">{formatCurrency(selectedTiket.harga * jumlah)}</span>
+                                    <span className="text-4xl md:text-5xl font-black text-red-800 tracking-tighter">{formatCurrency(selectedTiket.harga * jumlah)}</span>
                                 </div>
                             </div>
                         </div>
 
                         <Button
-                            className="w-full h-16 md:h-20 rounded-[24px] md:rounded-[28px] bg-rose-600 hover:bg-rose-700 text-xl md:text-2xl font-black text-white shadow-2xl shadow-rose-900/40 transition-all hover:scale-[1.02] active:scale-[0.98] group uppercase tracking-widest italic"
+                            className="w-full h-16 md:h-20 rounded-[24px] md:rounded-[28px] bg-gradient-to-r from-violet-700 to-red-600 hover:from-violet-800 hover:to-red-700 border-0 text-xl md:text-2xl font-black text-white shadow-2xl shadow-red-900/40 transition-all hover:scale-[1.02] active:scale-[0.98] group uppercase tracking-widest italic"
                             disabled={!selectedTiket || loading}
                             onClick={handleBooking}
                         >

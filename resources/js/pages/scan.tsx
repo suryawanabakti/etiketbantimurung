@@ -150,68 +150,66 @@ export default function ScanPage({ history = [] }: Props) {
     }, []);
 
     return (
-        <AppLayout>
+        <AppLayout breadcrumbs={[
+            { title: 'Scan Tiket', href: '#' },
+        ]}>
             <Head title="Scan Tiket" />
 
-            <div className="p-6 md:p-10 space-y-12 max-w-6xl mx-auto font-sans">
+            <div className="flex h-full flex-1 flex-col gap-6 p-4 md:p-6">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="space-y-2">
-                        <Badge className="bg-rose-500/10 text-rose-500 border-none px-4 py-1 rounded-full font-black uppercase tracking-widest text-[10px]">Gate Security</Badge>
-                        <h1 className="text-6xl font-black tracking-tighter text-slate-900 uppercase italic leading-none">Smart Validator</h1>
-                        <p className="text-slate-400 font-bold uppercase tracking-[0.3em] text-[10px] ml-1">Integrated Access Control</p>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center gap-2">
+                            <h1 className="text-2xl font-bold tracking-tight">Smart Validator</h1>
+                            <Badge variant="secondary" className="text-[10px]">Gate Security</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Integrated Access Control & Validasi Tiket Cepat</p>
                     </div>
                 </div>
 
-                <div className="grid gap-10 lg:grid-cols-5">
+                <div className="grid gap-6 lg:grid-cols-5">
                     {/* Camera Scanner Section */}
-                    <Card className="lg:col-span-3 border-none shadow-2xl shadow-slate-200/50 rounded-[48px] overflow-hidden bg-white flex flex-col group transition-all duration-500 hover:shadow-rose-500/5">
-                        <div className="relative aspect-square md:aspect-video bg-slate-900 overflow-hidden">
+                    <Card className="lg:col-span-3 flex flex-col group overflow-hidden">
+                        <div className="relative aspect-square md:aspect-video bg-muted/20 overflow-hidden border-b">
                             {!isScanning && (
-                                <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 space-y-8">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground space-y-6">
                                     <div className="relative">
-                                        <div className="absolute inset-0 bg-rose-500 blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity" />
-                                        <div className="relative w-28 h-28 rounded-[40px] bg-slate-800 flex items-center justify-center shadow-2xl border border-white/5">
-                                            <CameraOff className="w-12 h-12 text-slate-600" />
+                                        <div className="w-20 h-20 rounded-2xl bg-muted flex items-center justify-center shadow-sm border">
+                                            <CameraOff className="w-8 h-8 opacity-50" />
                                         </div>
                                     </div>
-                                    <div className="text-center px-12 space-y-3">
-                                        <p className="font-black uppercase tracking-[0.2em] text-sm text-slate-300">Scanner Engine Idle</p>
-                                        <p className="text-xs font-medium text-slate-500 leading-relaxed max-w-[280px]">Ready for high-speed ticket verification. Please activate camera to begin scanning.</p>
+                                    <div className="text-center px-8 space-y-2">
+                                        <p className="font-semibold text-sm">Scanner Idle</p>
+                                        <p className="text-xs text-muted-foreground max-w-[280px]">Nyalakan kamera untuk mulai memindai tiket pengunjung secara otomatis.</p>
                                     </div>
                                     <Button
                                         onClick={startScanner}
-                                        className="bg-rose-600 hover:bg-rose-700 text-white rounded-[24px] px-12 h-18 font-black uppercase tracking-widest text-xs shadow-2xl shadow-rose-900/40 active:scale-95 transition-all group/btn"
+                                        className="h-10 px-6 mt-4"
                                     >
-                                        <Camera className="w-5 h-5 mr-3 group-hover/btn:rotate-12 transition-transform" /> Start High-Speed Scan
+                                        <Camera className="w-4 h-4 mr-2" /> Mulai Scan Kamera
                                     </Button>
                                 </div>
                             )}
 
-                            <div id="reader" className={`${isScanning ? 'block' : 'hidden'} w-full h-full`} />
+                            <div id="reader" className={`${isScanning ? 'block' : 'hidden'} w-full h-full object-cover`} />
 
                             {isScanning && (
                                 <div className="absolute inset-0 pointer-events-none">
-                                    <div className="absolute inset-10 border-2 border-rose-500/20 rounded-[40px] flex items-center justify-center">
-                                        <div className="w-full h-full max-w-[300px] max-h-[300px] border-4 border-rose-500/40 rounded-3xl relative overflow-hidden">
-                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent animate-[scan_2s_infinite] shadow-[0_0_25px_rgba(244,63,94,1)] z-10" />
-                                            {/* Corners */}
-                                            <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-rose-500" />
-                                            <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-rose-500" />
-                                            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-rose-500" />
-                                            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-rose-500" />
+                                    <div className="absolute inset-8 border border-primary/20 rounded-3xl flex items-center justify-center">
+                                        <div className="w-full h-full max-w-[250px] max-h-[250px] border-2 border-primary/40 rounded-2xl relative overflow-hidden backdrop-blur-sm bg-background/5">
+                                            <div className="absolute top-0 left-0 w-full h-1 bg-primary animate-[scan_2s_infinite] shadow-[0_0_15px_rgba(var(--primary),0.8)] z-10" />
                                         </div>
                                     </div>
-                                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 p-4 bg-slate-900/90 backdrop-blur-2xl rounded-2xl flex items-center gap-6 text-white pointer-events-auto shadow-2xl border border-white/10">
-                                        <div className="flex items-center gap-3 px-2">
+                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 p-3 bg-background/90 backdrop-blur-md rounded-xl flex items-center gap-4 border shadow-lg pointer-events-auto">
+                                        <div className="flex items-center gap-2 px-2">
                                             <div className="relative">
-                                                <div className="absolute inset-0 bg-rose-600 animate-ping opacity-75 rounded-full" />
-                                                <div className="relative bg-rose-600 h-3 w-3 rounded-full" />
+                                                <div className="absolute inset-0 bg-primary animate-ping opacity-75 rounded-full" />
+                                                <div className="relative bg-primary h-2 w-2 rounded-full" />
                                             </div>
-                                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Scanner Active</span>
+                                            <span className="text-xs font-semibold">Aktif</span>
                                         </div>
-                                        <div className="w-px h-4 bg-white/10" />
-                                        <Button variant="ghost" size="sm" onClick={stopScanner} className="text-white hover:bg-rose-500 hover:text-white h-10 px-6 rounded-xl text-[10px] font-black uppercase transition-colors">Terminate</Button>
+                                        <div className="w-px h-4 bg-border" />
+                                        <Button variant="ghost" size="sm" onClick={stopScanner} className="h-8 px-4 text-xs font-medium hover:bg-destructive hover:text-white transition-colors">Berhenti</Button>
                                     </div>
                                 </div>
                             )}
@@ -241,142 +239,134 @@ export default function ScanPage({ history = [] }: Props) {
                     </Card>
 
                     {/* Manual Input Section */}
-                    <div className="lg:col-span-2 space-y-8">
-                        <Card className="border-none shadow-2xl shadow-slate-200/50 rounded-[48px] overflow-hidden bg-white p-8 md:p-10 transition-all hover:shadow-slate-300/50">
-                            <CardHeader className="p-0 mb-8">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <QrCode className="w-5 h-5 text-rose-500" />
-                                    <CardTitle className="text-2xl font-black tracking-tighter text-slate-900 uppercase italic leading-none">Manual Override</CardTitle>
+                    <div className="lg:col-span-2 space-y-6">
+                        <Card className="overflow-hidden bg-background p-6 md:p-8">
+                            <CardHeader className="p-0 mb-6">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <QrCode className="w-5 h-5 text-primary" />
+                                    <CardTitle className="text-xl font-bold tracking-tight">Manual Override</CardTitle>
                                 </div>
-                                <CardDescription className="text-slate-400 font-medium text-xs">Execute manual validation when scanner is inaccessible.</CardDescription>
+                                <CardDescription className="text-xs">Validasi manual jika scan kamera bermasalah.</CardDescription>
                             </CardHeader>
                             <CardContent className="p-0">
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div className="space-y-2">
                                         <div className="relative group">
                                             <Input
                                                 placeholder="BTM-XXXXXXXXXX"
-                                                className="h-24 pl-8 pr-8 rounded-[32px] border-slate-100 bg-slate-50/80 text-2xl font-black tracking-[0.15em] uppercase focus:ring-rose-500 focus:border-rose-500 focus:bg-white transition-all italic text-slate-900"
+                                                className="h-14 font-mono text-lg uppercase focus-visible:ring-primary"
                                                 value={data.kode_qr}
                                                 onChange={e => setData('kode_qr', e.target.value.toUpperCase())}
                                             />
                                             {errors.kode_qr && (
-                                                <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                                                    <AlertCircle className="w-6 h-6 text-rose-500" />
+                                                <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                                                    <AlertCircle className="w-5 h-5 text-destructive" />
                                                 </div>
                                             )}
                                         </div>
                                         {errors.kode_qr && (
-                                            <div className="flex items-center gap-2 text-rose-500 font-black text-[10px] uppercase tracking-widest px-6 animate-in fade-in slide-in-from-top-1">
+                                            <div className="flex items-center gap-2 text-destructive font-medium text-xs px-2 animate-in fade-in slide-in-from-top-1">
                                                 {errors.kode_qr}
                                             </div>
                                         )}
                                     </div>
                                     <Button
-                                        className="w-full h-20 rounded-[32px] bg-slate-900 hover:bg-slate-800 text-white font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-slate-200 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
+                                        className="w-full h-12"
                                         disabled={processing || !data.kode_qr}
                                     >
                                         {processing ? (
-                                            <RefreshCw className="w-5 h-5 animate-spin" />
-                                        ) : (
-                                            <>Verify Sequence</>
-                                        )}
+                                            <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                                        ) : null}
+                                        Verifikasi Tiket
                                     </Button>
                                 </form>
                             </CardContent>
                         </Card>
 
-                        <Card className="border-none shadow-xl shadow-slate-900/10 rounded-[48px] overflow-hidden bg-slate-900 text-white p-10 flex flex-col justify-between relative group min-h-[340px] transition-all duration-700 hover:shadow-rose-500/20">
-                            <div className="absolute top-0 right-0 w-80 h-80 bg-rose-600/20 blur-[120px] rounded-full group-hover:bg-rose-600/30 transition-all duration-500" />
-                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-emerald-500/10 blur-[80px] rounded-full" />
-
-                            <div className="relative z-10 space-y-10">
-                                <div className="bg-white/5 w-24 h-24 rounded-[36px] flex items-center justify-center shadow-2xl backdrop-blur-3xl border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                                    <CheckCircle2 className="w-12 h-12 text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
+                        <Card className="overflow-hidden bg-primary/5 text-foreground p-8 flex flex-col justify-between border-primary/20 min-h-[280px]">
+                            <div className="space-y-6">
+                                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center">
+                                    <CheckCircle2 className="w-8 h-8 text-primary" />
                                 </div>
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     <div className="flex items-center gap-3">
-                                        <Badge className="bg-emerald-500 text-white border-none text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Secure Core</Badge>
-                                        <h3 className="text-3xl font-black tracking-tighter uppercase italic leading-none">Security Integrity</h3>
+                                        <Badge variant="outline" className="text-[10px] bg-background">Secure Core</Badge>
+                                        <h3 className="text-xl font-bold tracking-tight">Security Integrity</h3>
                                     </div>
-                                    <p className="text-slate-400 font-medium leading-relaxed text-sm">
-                                        Automated systems are synchronized. Real-time logging active. Ensure optimal visibility for sub-200ms verification speed.
+                                    <p className="text-muted-foreground text-sm">
+                                        Pencatatan real-time aktif. Sistem keamanan sinkron. Pastikan koneksi stabil untuk verifikasi cepat.
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="relative z-10 pt-10 border-t border-white/10 mt-10">
-                                <div className="flex items-center justify-between">
-                                    <div className="space-y-1">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">System Pulse</p>
-                                        <p className="text-emerald-400 font-black italic uppercase tracking-widest text-sm">Online & Secure</p>
-                                    </div>
-                                    <Scan className="w-12 h-12 text-slate-800 rotate-12" />
+                            <div className="pt-8 border-t border-border/50 mt-8 flex items-center justify-between">
+                                <div className="space-y-1">
+                                    <p className="text-[10px] font-semibold text-muted-foreground uppercase">System Status</p>
+                                    <p className="text-primary font-bold text-sm">Online & Ready</p>
                                 </div>
+                                <Scan className="w-8 h-8 opacity-50" />
                             </div>
                         </Card>
                     </div>
                 </div>
 
                 {/* Scan History Section */}
-                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
-                    <div className="flex items-center justify-between px-2">
-                        <div className="flex items-center gap-4">
-                            <div className="p-3 bg-slate-100 rounded-2xl">
-                                <History className="w-6 h-6 text-slate-900" />
-                            </div>
-                            <div>
-                                <h2 className="text-4xl font-black tracking-tighter text-slate-900 uppercase italic leading-none">Log Terbaru</h2>
-                                <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px] mt-1">Real-time throughput analysis</p>
-                            </div>
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-muted rounded-md hidden sm:block">
+                            <History className="w-5 h-5 text-muted-foreground" />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold tracking-tight">Riwayat Scan Terbaru</h2>
+                            <p className="text-xs text-muted-foreground mt-0.5">Real-time log pemindaian hari ini</p>
                         </div>
                     </div>
 
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
                         {sortedHistory.length > 0 ? (
                             sortedHistory.map((item) => (
-                                <Card key={item.id} className="border-none shadow-xl shadow-slate-100/50 rounded-[32px] overflow-hidden bg-white p-6 hover:translate-y-[-4px] transition-all duration-300 group">
-                                    <div className="flex items-start justify-between mb-6">
-                                        <div className="h-14 w-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white group-hover:bg-rose-600 transition-colors duration-300">
-                                            <TicketIcon className="w-7 h-7" />
+                                <Card key={item.id} className="p-5 flex flex-col gap-4">
+                                    <div className="flex items-start justify-between">
+                                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                            <TicketIcon className="w-5 h-5" />
                                         </div>
                                         <div className="text-right">
-                                            <Badge variant="outline" className="text-[9px] font-black uppercase tracking-tighter border-slate-100 text-slate-400 mb-1">Authenticated</Badge>
-                                            <p className="text-[10px] font-black text-rose-500 font-mono tracking-wider">{item.kode_qr}</p>
+                                            <Badge variant="outline" className="text-[9px] mb-1">Authenticated</Badge>
+                                            <p className="text-xs font-mono font-semibold text-primary">{item.kode_qr}</p>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-4">
-                                        <div>
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Visitor Identity</p>
-                                            <h4 className="font-black text-lg text-slate-900 uppercase truncate italic">{item.pemesanan?.user?.nama || 'Unknown User'}</h4>
+                                    <div className="space-y-3">
+                                        <div className="space-y-1">
+                                            <p className="text-[10px] text-muted-foreground uppercase font-semibold">Pengunjung</p>
+                                            <h4 className="font-semibold text-sm truncate">{item.pemesanan?.user?.nama || 'Unknown User'}</h4>
                                         </div>
 
-                                        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-50">
+                                        <div className="grid grid-cols-2 gap-3 pt-3 border-t">
                                             <div className="space-y-1">
-                                                <div className="flex items-center gap-2 text-slate-400">
+                                                <div className="flex items-center gap-1.5 text-muted-foreground">
                                                     <Calendar className="w-3 h-3" />
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest">Date</span>
+                                                    <span className="text-[10px] uppercase font-semibold">Date</span>
                                                 </div>
-                                                <p className="text-[11px] font-black text-slate-600">{new Date(item.waktu_scan).toLocaleDateString('id-ID')}</p>
+                                                <p className="text-xs font-medium">{new Date(item.waktu_scan).toLocaleDateString('id-ID')}</p>
                                             </div>
                                             <div className="space-y-1">
-                                                <div className="flex items-center gap-2 text-slate-400">
+                                                <div className="flex items-center gap-1.5 text-muted-foreground">
                                                     <Clock className="w-3 h-3" />
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest">Time</span>
+                                                    <span className="text-[10px] uppercase font-semibold">Time</span>
                                                 </div>
-                                                <p className="text-[11px] font-black text-slate-600">{new Date(item.waktu_scan).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}</p>
+                                                <p className="text-xs font-medium">{new Date(item.waktu_scan).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </Card>
                             ))
                         ) : (
-                            <div className="col-span-full py-20 text-center space-y-4">
-                                <div className="mx-auto w-24 h-24 bg-slate-50 flex items-center justify-center rounded-[32px]">
-                                    <RefreshCw className="w-10 h-10 text-slate-200" />
+                            <div className="col-span-full py-16 text-center space-y-4 border rounded-xl bg-muted/10">
+                                <div className="mx-auto w-16 h-16 bg-muted flex items-center justify-center rounded-2xl">
+                                    <RefreshCw className="w-6 h-6 text-muted-foreground" />
                                 </div>
-                                <p className="text-slate-400 font-black uppercase tracking-widest text-[10px]">No verification history found.</p>
+                                <p className="text-muted-foreground text-sm font-medium">Belum ada riwayat scan pada hari ini.</p>
                             </div>
                         )}
                     </div>
@@ -385,80 +375,62 @@ export default function ScanPage({ history = [] }: Props) {
 
             {/* Success Dialog */}
             <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
-                <DialogContent className="sm:max-w-[425px] border-none p-0 overflow-hidden rounded-[48px] bg-slate-900 text-white shadow-[0_0_100px_rgba(16,185,129,0.3)]">
-                    <div className="relative overflow-hidden p-10">
-                        {/* Background Effects */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 blur-[80px] rounded-full" />
-                        <div className="absolute bottom-0 left-0 w-40 h-40 bg-rose-500/10 blur-[60px] rounded-full" />
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <div className="mx-auto w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mb-4">
+                            <CheckCircle className="w-8 h-8" />
+                        </div>
+                        <DialogTitle className="text-center text-2xl font-bold text-emerald-600 dark:text-emerald-400">Tiket Valid</DialogTitle>
+                        <DialogDescription className="text-center">
+                            Akses diberikan dengan sukses.
+                        </DialogDescription>
+                    </DialogHeader>
 
-                        <div className="relative z-10 text-center space-y-8">
-                            <div className="mx-auto w-28 h-28 bg-emerald-500 rounded-[40px] flex items-center justify-center shadow-2xl shadow-emerald-500/40 animate-in zoom-in-50 duration-500">
-                                <CheckCircle className="w-16 h-16 text-white animate-in slide-in-from-bottom-2" />
+                    <div className="space-y-4 pt-4 my-2">
+                        <div className="space-y-1 text-center">
+                            <p className="text-xs text-muted-foreground font-semibold uppercase">Nama Pengunjung</p>
+                            <p className="text-lg font-bold">{lastScanned?.pemesanan?.user?.nama || 'Verified Visitor'}</p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 bg-muted/50 p-4 rounded-lg">
+                            <div className="space-y-1 text-center border-r">
+                                <p className="text-[10px] text-muted-foreground uppercase font-semibold">Kode Tiket</p>
+                                <p className="text-sm font-mono font-bold text-primary">{lastScanned?.kode_qr}</p>
                             </div>
-
-                            <div className="space-y-2">
-                                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Verified</h2>
-                                <p className="text-emerald-400 font-black uppercase tracking-[0.3em] text-[10px]">Access Granted Successfully</p>
+                            <div className="space-y-1 text-center">
+                                <p className="text-[10px] text-muted-foreground uppercase font-semibold">Waktu Scan</p>
+                                <p className="text-sm font-medium">{new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}</p>
                             </div>
-
-                            <div className="space-y-6 pt-10 border-t border-white/10">
-                                <div className="space-y-1">
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Ticket Holder</p>
-                                    <p className="text-2xl font-black uppercase italic tracking-tight">{lastScanned?.pemesanan?.user?.nama || 'Verified Visitor'}</p>
-                                </div>
-                                <div className="grid grid-cols-2 gap-6 bg-white/5 p-6 rounded-[32px] border border-white/5">
-                                    <div className="space-y-1">
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">ID Source</p>
-                                        <p className="text-sm font-black italic uppercase text-rose-500">{lastScanned?.kode_qr}</p>
-                                    </div>
-                                    <div className="space-y-1">
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Verify Time</p>
-                                        <p className="text-sm font-black italic uppercase text-emerald-400">{new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Button
-                                onClick={() => setShowSuccess(false)}
-                                className="w-full h-18 bg-white text-slate-900 hover:bg-slate-100 rounded-[28px] font-black uppercase tracking-widest text-xs"
-                            >
-                                Continue To Next Scan
-                            </Button>
                         </div>
                     </div>
+
+                    <Button onClick={() => setShowSuccess(false)} className="w-full mt-2">
+                        Lanjut ke tiket berikutnya
+                    </Button>
                 </DialogContent>
             </Dialog>
 
             {/* Error Dialog */}
             <Dialog open={showError} onOpenChange={setShowError}>
-                <DialogContent className="sm:max-w-[425px] border-none p-0 overflow-hidden rounded-[48px] bg-slate-900 text-white shadow-[0_0_100px_rgba(244,63,94,0.3)]">
-                    <div className="relative overflow-hidden p-10">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/20 blur-[100px] rounded-full" />
-
-                        <div className="relative z-10 text-center space-y-8">
-                            <div className="mx-auto w-28 h-28 bg-rose-600 rounded-[40px] flex items-center justify-center shadow-2xl shadow-rose-600/40 animate-in zoom-in-50 duration-500">
-                                <XCircle className="w-16 h-16 text-white" />
-                            </div>
-
-                            <div className="space-y-2">
-                                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Denied</h2>
-                                <p className="text-rose-400 font-black uppercase tracking-[0.3em] text-[10px]">Verification Error</p>
-                            </div>
-
-                            <div className="bg-white/5 p-8 rounded-[32px] border border-white/5">
-                                <p className="text-slate-300 font-medium leading-relaxed italic text-lg">
-                                    "{errorMessage || 'Tiket sudah tidak aktif atau sudah digunakan.'}"
-                                </p>
-                            </div>
-
-                            <Button
-                                onClick={() => setShowError(false)}
-                                className="w-full h-18 bg-rose-600 text-white hover:bg-rose-700 rounded-[28px] font-black uppercase tracking-widest text-xs"
-                            >
-                                Acknowledge & Continue
-                            </Button>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <div className="mx-auto w-16 h-16 bg-destructive/10 text-destructive rounded-full flex items-center justify-center mb-4">
+                            <XCircle className="w-8 h-8" />
                         </div>
+                        <DialogTitle className="text-center text-2xl font-bold text-destructive">Akses Ditolak</DialogTitle>
+                        <DialogDescription className="text-center">
+                            Gagal memverifikasi tiket pengunjung.
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <div className="bg-muted p-4 rounded-lg my-4 text-center">
+                        <p className="text-sm font-medium">
+                            "{errorMessage || 'Tiket sudah tidak aktif atau sudah digunakan.'}"
+                        </p>
                     </div>
+
+                    <Button variant="destructive" onClick={() => setShowError(false)} className="w-full">
+                        Coba Lagi
+                    </Button>
                 </DialogContent>
             </Dialog>
 

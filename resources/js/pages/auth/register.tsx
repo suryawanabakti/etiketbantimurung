@@ -24,40 +24,40 @@ export default function Register() {
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-900/50 via-slate-900/20 to-transparent" />
                 </div>
 
-                <Link href={home()} className="relative z-10 flex items-center gap-3 group">
-                    <div className="bg-rose-600 p-2.5 rounded-2xl text-white shadow-2xl transition-transform group-hover:scale-110 group-hover:rotate-3">
-                        <Ticket className="w-6 h-6" />
+                <Link href={home()} className="relative z-10 flex items-center gap-2 group w-fit">
+                    <div className="bg-primary p-2 rounded-xl text-primary-foreground shadow-lg transition-transform group-hover:scale-105">
+                        <Ticket className="w-5 h-5" />
                     </div>
-                    <span className="text-2xl font-black tracking-tighter text-white italic uppercase">Bantimurung</span>
+                    <span className="text-xl font-bold tracking-tight text-white transition-colors">Bantimurung</span>
                 </Link>
 
                 <div className="relative z-10 max-w-md">
-                    <h2 className="text-5xl font-black text-white leading-tight mb-6 uppercase italic tracking-tighter">
-                        Mulai <br /><span className="text-rose-500">Petualanganmu</span>
+                    <h2 className="text-4xl font-bold text-white leading-tight mb-4 tracking-tight">
+                        Mulai <br />Petualanganmu
                     </h2>
-                    <p className="text-xl text-slate-300 font-medium leading-relaxed">
+                    <p className="text-lg text-slate-300 leading-relaxed">
                         Daftar sekarang untuk mendapatkan akses mudah ke tiket masuk dan fasilitas premium di Taman Nasional Bantimurung.
                     </p>
                 </div>
 
-                <div className="relative z-10 text-slate-500 text-sm font-bold uppercase tracking-[0.2em]">
+                <div className="relative z-10 text-slate-400 text-sm font-medium">
                     © {new Date().getFullYear()} Wisata Alam Maros
                 </div>
             </div>
 
             {/* Right Side: Form */}
-            <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12 bg-white relative overflow-y-auto">
+            <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12 bg-background relative overflow-y-auto">
                 <div className="absolute top-8 left-8 md:hidden">
-                    <Link href={home()} className="flex items-center gap-2 text-rose-600 font-black uppercase tracking-widest text-sm italic">
+                    <Link href={home()} className="flex items-center gap-2 text-primary font-medium text-sm">
                         <ArrowLeft className="w-4 h-4" />
                         Kembali
                     </Link>
                 </div>
 
-                <div className="w-full max-w-md space-y-8 py-12 md:py-0">
-                    <div className="space-y-3">
-                        <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight uppercase italic leading-none">Daftar Akun</h1>
-                        <p className="text-slate-400 font-medium text-lg leading-tight">Lengkapi data diri Anda untuk membuat akun baru.</p>
+                <div className="w-full max-w-sm space-y-6 py-12 md:py-0">
+                    <div className="space-y-2 text-center md:text-left">
+                        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Daftar Akun</h1>
+                        <p className="text-muted-foreground">Lengkapi data diri Anda untuk membuat akun baru.</p>
                     </div>
 
                     <Form
@@ -67,12 +67,12 @@ export default function Register() {
                     >
                         {({ processing, errors }) => (
                             <>
-                                <div className="space-y-5">
+                                <div className="space-y-4">
                                     <div className="space-y-2">
-                                        <Label htmlFor="name" className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Nama Lengkap</Label>
-                                        <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-rose-500 transition-colors">
-                                                <User className="w-5 h-5" />
+                                        <Label htmlFor="name">Nama Lengkap</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                <User className="w-4 h-4" />
                                             </div>
                                             <Input
                                                 id="name"
@@ -83,17 +83,17 @@ export default function Register() {
                                                 tabIndex={1}
                                                 autoComplete="name"
                                                 placeholder="Contoh: Budi Santoso"
-                                                className="h-14 pl-12 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white focus:ring-rose-500/20 focus:border-rose-500 transition-all font-medium text-lg"
+                                                className="pl-9"
                                             />
                                         </div>
                                         <InputError message={errors.nama} />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="email" className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email</Label>
-                                        <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-rose-500 transition-colors">
-                                                <Mail className="w-5 h-5" />
+                                        <Label htmlFor="email">Email</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                <Mail className="w-4 h-4" />
                                             </div>
                                             <Input
                                                 id="email"
@@ -102,18 +102,18 @@ export default function Register() {
                                                 required
                                                 tabIndex={2}
                                                 autoComplete="email"
-                                                placeholder="email@example.com"
-                                                className="h-14 pl-12 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white focus:ring-rose-500/20 focus:border-rose-500 transition-all font-medium text-lg"
+                                                placeholder="m@example.com"
+                                                className="pl-9"
                                             />
                                         </div>
                                         <InputError message={errors.email} />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="no_hp" className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-1">No. WhatsApp</Label>
-                                        <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-rose-500 transition-colors">
-                                                <Phone className="w-5 h-5" />
+                                        <Label htmlFor="no_hp">No. WhatsApp</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                <Phone className="w-4 h-4" />
                                             </div>
                                             <Input
                                                 id="no_hp"
@@ -122,17 +122,17 @@ export default function Register() {
                                                 required
                                                 tabIndex={3}
                                                 placeholder="0812XXXXXXXX"
-                                                className="h-14 pl-12 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white focus:ring-rose-500/20 focus:border-rose-500 transition-all font-medium text-lg"
+                                                className="pl-9"
                                             />
                                         </div>
                                         <InputError message={errors.no_hp} />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="password" className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Password</Label>
-                                        <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-rose-500 transition-colors">
-                                                <Lock className="w-5 h-5" />
+                                        <Label htmlFor="password">Password</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                <Lock className="w-4 h-4" />
                                             </div>
                                             <Input
                                                 id="password"
@@ -142,17 +142,17 @@ export default function Register() {
                                                 tabIndex={4}
                                                 autoComplete="new-password"
                                                 placeholder="••••••••"
-                                                className="h-14 pl-12 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white focus:ring-rose-500/20 focus:border-rose-500 transition-all font-medium text-lg"
+                                                className="pl-9"
                                             />
                                         </div>
                                         <InputError message={errors.password} />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="password_confirmation" className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Konfirmasi Password</Label>
-                                        <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-rose-500 transition-colors">
-                                                <Lock className="w-5 h-5 opacity-50" />
+                                        <Label htmlFor="password_confirmation">Konfirmasi Password</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                                                <Lock className="w-4 h-4 opacity-70" />
                                             </div>
                                             <Input
                                                 id="password_confirmation"
@@ -162,7 +162,7 @@ export default function Register() {
                                                 tabIndex={5}
                                                 autoComplete="new-password"
                                                 placeholder="••••••••"
-                                                className="h-14 pl-12 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white focus:ring-rose-500/20 focus:border-rose-500 transition-all font-medium text-lg"
+                                                className="pl-9"
                                             />
                                         </div>
                                         <InputError message={errors.password_confirmation} />
@@ -170,32 +170,24 @@ export default function Register() {
 
                                     <Button
                                         type="submit"
-                                        className="h-16 w-full rounded-2xl bg-rose-600 hover:bg-rose-700 text-lg font-black uppercase tracking-widest shadow-2xl shadow-rose-900/20 transition-all hover:scale-[1.02] active:scale-[0.98] group mt-4"
+                                        className="w-full mt-2"
                                         tabIndex={6}
                                         disabled={processing}
                                     >
-                                        {processing ? (
-                                            <Spinner />
-                                        ) : (
-                                            <>
-                                                Buat Akun Sekarang
-                                                <UserPlus className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                            </>
-                                        )}
+                                        {processing && <Spinner className="mr-2 h-4 w-4" />}
+                                        Buat Akun
                                     </Button>
                                 </div>
 
-                                <div className="text-center pt-2">
-                                    <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">
-                                        Sudah punya akun?{' '}
-                                        <Link
-                                            href={login()}
-                                            className="text-rose-600 hover:text-rose-700 transition-colors font-black ml-1 border-b-2 border-rose-100 hover:border-rose-500"
-                                            tabIndex={6}
-                                        >
-                                            Masuk Disini
-                                        </Link>
-                                    </p>
+                                <div className="text-center text-sm pt-2">
+                                    <span className="text-muted-foreground">Sudah punya akun? </span>
+                                    <Link
+                                        href={login()}
+                                        className="font-medium text-primary hover:underline"
+                                        tabIndex={6}
+                                    >
+                                        Masuk
+                                    </Link>
                                 </div>
                             </>
                         )}

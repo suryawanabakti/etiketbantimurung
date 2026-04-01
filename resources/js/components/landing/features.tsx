@@ -1,4 +1,4 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ShieldCheck, CreditCard, QrCode } from 'lucide-react';
 
 export default function Features() {
@@ -6,35 +6,52 @@ export default function Features() {
         {
             title: "Akses Cepat",
             description: "Masuk tanpa antre di loket pembayaran utama. Hemat waktu Anda untuk petualangan yang lebih seru.",
-            icon: <ShieldCheck className="w-8 h-8" />,
-            color: "bg-rose-100 text-rose-600 shadow-rose-100",
+            icon: <ShieldCheck className="w-6 h-6" />,
         },
         {
             title: "Keamanan Terjamin",
             description: "Transaksi aman menggunakan gateway Midtrans yang terpercaya dan terenkripsi secara global.",
-            icon: <CreditCard className="w-8 h-8" />,
-            color: "bg-emerald-100 text-emerald-600 shadow-emerald-100",
+            icon: <CreditCard className="w-6 h-6" />,
         },
         {
             title: "Layanan E-Tiket",
             description: "Tiket otomatis tersimpan & terkirim ke WhatsApp Anda. Lebih praktis dan ramah lingkungan.",
-            icon: <QrCode className="w-8 h-8" />,
-            color: "bg-blue-100 text-blue-600 shadow-blue-100",
+            icon: <QrCode className="w-6 h-6" />,
         }
     ];
 
     return (
-        <section className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 md:px-8">
-                <div className="grid gap-6 md:gap-8 md:grid-cols-3">
+        <section id="features" className="py-24 bg-[#fff9f9]">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 text-center text-slate-900">
+                <div className="mb-16">
+                    <span className="bg-red-100 text-red-800 rounded-full px-6 py-2 text-[11px] font-bold uppercase tracking-widest inline-block mb-6 shadow-sm">
+                        Keunggulan Layanan
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-slate-900">
+                        Mengapa Harus Memilih E-Tiket Bantimurung?
+                    </h2>
+                    <div className="w-16 h-1 bg-red-800 mx-auto mb-6"></div>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium">
+                        Temukan alasan kuat mengapa pemesanan E-Tiket Bantimurung adalah pilihan tepat untuk kemudahan wisata digital Anda.
+                    </p>
+                </div>
+
+                <div className="grid gap-6 md:gap-8 md:grid-cols-3 text-left">
                     {features.map((feature, index) => (
-                        <Card key={index} className="bg-slate-50/50 border-none shadow-none rounded-[32px] md:rounded-[40px] p-2 md:p-4 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 group">
-                            <CardHeader className="p-6 md:p-8 text-center md:text-left">
-                                <div className={`${feature.color} w-14 h-14 md:w-16 md:h-16 rounded-[20px] md:rounded-[24px] flex items-center justify-center mb-6 md:mb-8 shadow-2xl transition-transform group-hover:scale-110 group-hover:rotate-3 mx-auto md:mx-0`}>
+                        <Card key={index} className="bg-white border text-left border-red-50 shadow-sm shadow-red-900/5 rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-900/10 relative overflow-hidden group">
+                            <span className="absolute top-6 right-6 text-7xl font-bold text-slate-50 group-hover:text-red-50 transition-colors pointer-events-none select-none z-0">
+                                0{index + 1}
+                            </span>
+                            <CardHeader className="p-0 relative z-10">
+                                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-red-50 text-red-800 flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition-transform">
                                     {feature.icon}
                                 </div>
-                                <CardTitle className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-slate-900 uppercase italic tracking-tight">{feature.title}</CardTitle>
-                                <CardDescription className="text-slate-500 text-base md:text-lg leading-relaxed font-medium">{feature.description}</CardDescription>
+                                <CardTitle className="text-lg md:text-xl font-bold mb-3 text-slate-900 tracking-normal">
+                                    {feature.title}
+                                </CardTitle>
+                                <CardDescription className="text-slate-500 text-sm md:text-base leading-relaxed font-normal">
+                                    {feature.description}
+                                </CardDescription>
                             </CardHeader>
                         </Card>
                     ))}

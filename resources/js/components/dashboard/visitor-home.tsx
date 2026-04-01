@@ -93,7 +93,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                 <section id="tickets" className="space-y-8 md:space-y-12">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
                         <div className="space-y-2 md:space-y-3">
-                            <Badge className="bg-rose-100 text-rose-600 border-none font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] text-[10px]">Pemesanan Tiket</Badge>
+                            <Badge className="bg-red-100 text-red-600 border-none font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] text-[10px]">Pemesanan Tiket</Badge>
                             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 uppercase italic">Beli Tiket Baru</h2>
                         </div>
                     </div>
@@ -158,8 +158,8 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                                         <div className="space-y-4 text-center md:text-left w-full">
                                             <h3 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight uppercase italic">{order.tiket.nama_tiket}</h3>
                                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 text-xs text-slate-400 font-bold">
-                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Timer className="w-3 h-3 text-rose-500" /> {new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Info className="w-3 h-3 text-rose-500" /> ID #{order.id}</span>
+                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Timer className="w-3 h-3 text-red-500" /> {new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Info className="w-3 h-3 text-red-500" /> ID #{order.id}</span>
                                                 <Badge className="bg-slate-900 text-white rounded-lg px-3 py-1 text-[10px] font-black uppercase tracking-widest">{order.jumlah_tiket} Orang</Badge>
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                                                 )}
                                                 {order.status_pemesanan === 'paid' && order.tiket_qr && (
                                                     <Button
-                                                        className={`flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest shadow-2xl transition-all ${order.tiket_qr.status_tiket === 'aktif' ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-rose-200' : 'bg-slate-100 text-slate-400'}`}
+                                                        className={`flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest shadow-2xl transition-all ${order.tiket_qr.status_tiket === 'aktif' ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-200' : 'bg-slate-100 text-slate-400'}`}
                                                         onClick={() => setShowQr(order)}
                                                         disabled={order.tiket_qr.status_tiket !== 'aktif'}
                                                     >
@@ -194,7 +194,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                                                         className="flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest border-slate-200 hover:bg-slate-50 transition-all text-slate-600"
                                                         onClick={() => router.visit(`/invoice/${order.id}`)}
                                                     >
-                                                        <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2.5] text-rose-500" />
+                                                        <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2.5] text-red-500" />
                                                         Invoice
                                                     </Button>
                                                 )}
@@ -214,7 +214,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                             <h3 className="text-2xl font-black text-slate-900 uppercase italic">Riwayat Masih Kosong</h3>
                             <p className="text-slate-400 text-lg max-w-sm mx-auto mb-10 font-medium">Anda belum memiliki riwayat pemesanan. Mulai petualangan Anda sekarang juga!</p>
                             <Button
-                                className="bg-rose-600 hover:bg-rose-700 text-white font-black uppercase tracking-widest px-10 h-14 rounded-full shadow-2xl shadow-rose-900/20"
+                                className="bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest px-10 h-14 rounded-full shadow-2xl shadow-red-900/20"
                                 onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
                             >
                                 Pesan Sekarang
@@ -227,9 +227,9 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
             {/* QR Modal */}
             <Dialog open={!!showQr} onOpenChange={() => setShowQr(null)}>
                 <DialogContent className="sm:max-w-md rounded-[48px] border-none shadow-2xl p-0 overflow-hidden bg-white">
-                    <DialogHeader className="p-10 bg-rose-600 text-white rounded-t-[48px] text-center">
+                    <DialogHeader className="p-10 bg-red-600 text-white rounded-t-[48px] text-center">
                         <DialogTitle className="text-4xl font-black tracking-tighter uppercase italic">E-Tiket Wisata</DialogTitle>
-                        <DialogDescription className="text-rose-100 text-lg font-medium mt-2">
+                        <DialogDescription className="text-red-100 text-lg font-medium mt-2">
                             Tunjukkan QR Code ini pada mesin scan loket.
                         </DialogDescription>
                     </DialogHeader>
@@ -259,7 +259,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                                     className="h-16 rounded-[24px] border-slate-200 text-slate-600 font-black uppercase tracking-widest hover:bg-slate-50"
                                     onClick={() => window.open(`https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${showQr.tiket_qr.kode_qr}`, '_blank')}
                                 >
-                                    <Download className="w-5 h-5 mr-3 text-rose-600" />
+                                    <Download className="w-5 h-5 mr-3 text-red-600" />
                                     PNG
                                 </Button>
                                 <Button
@@ -267,14 +267,14 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                                     className="h-16 rounded-[24px] border-slate-200 text-slate-600 font-black uppercase tracking-widest hover:bg-slate-50"
                                     onClick={() => window.print()}
                                 >
-                                    <Printer className="w-5 h-5 mr-3 text-rose-600" />
+                                    <Printer className="w-5 h-5 mr-3 text-red-600" />
                                     Cetak
                                 </Button>
                                 <Button
                                     className="w-full col-span-2 h-16 rounded-[24px] bg-slate-900 hover:bg-slate-800 text-white font-black uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
                                     onClick={() => router.visit(`/invoice/${showQr.id}`)}
                                 >
-                                    <FileText className="w-5 h-5 text-rose-500" />
+                                    <FileText className="w-5 h-5 text-red-500" />
                                     Detail Invoice
                                 </Button>
                             </div>
@@ -307,7 +307,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
 
                         <div className="grid gap-4 w-full">
                             <Button
-                                className="w-full h-16 rounded-[24px] bg-rose-600 hover:bg-rose-700 text-white font-black uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                                className="w-full h-16 rounded-[24px] bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
 
                             >
                                 <Ticket className="w-5 h-5" />
@@ -315,7 +315,7 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
                             </Button>
                             <Button
                                 variant="ghost"
-                                className="w-full h-14 rounded-[24px] text-slate-400 font-black uppercase tracking-widest hover:text-rose-600 hover:bg-rose-50 transition-all"
+                                className="w-full h-14 rounded-[24px] text-slate-400 font-black uppercase tracking-widest hover:text-red-600 hover:bg-red-50 transition-all"
                                 onClick={() => setShowSuccess(false)}
                             >
                                 Selesai

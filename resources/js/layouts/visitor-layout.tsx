@@ -36,27 +36,29 @@ export default function VisitorLayout({ children }: Props) {
 
 
     return (
-        <div className="min-h-screen bg-white font-sans selection:bg-rose-100 selection:text-rose-900">
+        <div className="min-h-screen bg-white font-sans selection:bg-red-100 selection:text-red-900">
             {/* Elegant Navbar */}
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-slate-200/50 py-3' : 'bg-transparent py-5 md:py-7'}`}>
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-red-800/95 backdrop-blur-md shadow-md py-3' : 'bg-red-800 py-3 md:py-4'}`}>
                 <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-                    <Link href={home()} className="flex items-center gap-2 md:gap-3 group">
-                        <div className="bg-rose-600 p-2 md:p-2.5 rounded-xl md:rounded-2xl text-white shadow-2xl transition-transform group-hover:scale-110 group-hover:rotate-3">
-                            <Ticket className="w-5 h-5 md:w-6 md:h-6" />
+                    <Link href={'/'} className="flex items-center gap-2 md:gap-3 group">
+                        <div className="bg-white p-1.5 md:p-2 rounded-full text-red-800 shadow-md transition-transform group-hover:scale-105">
+                            <Ticket className="w-4 h-4 md:w-5 md:h-5" />
                         </div>
-                        <span className={`text-xl md:text-2xl font-black tracking-tighter italic uppercase transition-colors text-slate-900`}>Bantimurung</span>
+                        <span className="text-lg md:text-xl font-bold tracking-tight uppercase text-white">Bantimurung</span>
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-10">
-                        <Link href="/dashboard" className="text-sm font-black uppercase tracking-widest text-slate-600 hover:text-rose-600 transition-colors">Beranda</Link>
-                        <Link href="/dashboard#tickets" className="text-sm font-black uppercase tracking-widest text-slate-600 hover:text-rose-600 transition-colors">Beli Tiket</Link>
-                        <Link href="/dashboard#my-tickets" className="text-sm font-black uppercase tracking-widest text-slate-600 hover:text-rose-600 transition-colors">Tiket Saya</Link>
+                    <div className="hidden md:flex items-center gap-8 lg:gap-12">
+                        <div className="flex items-center gap-6 lg:gap-8 text-sm font-medium text-white/90">
+                            <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
+                            <Link href="/dashboard#tickets" className="hover:text-white transition-colors">Beli Tiket</Link>
+                            <Link href="/dashboard#my-tickets" className="hover:text-white transition-colors">Tiket Saya</Link>
+                        </div>
 
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" className="relative h-12 w-12 rounded-2xl p-0 overflow-hidden border-2 border-slate-200 hover:border-rose-500 transition-all">
-                                    <div className="flex items-center justify-center w-full h-full bg-slate-100 text-rose-600 font-black text-lg uppercase">
+                                <Button variant="ghost" className="relative h-10 w-10 rounded-full p-0 overflow-hidden border border-white/30 hover:bg-white/10 transition-all">
+                                    <div className="flex items-center justify-center w-full h-full text-white font-bold text-base">
                                         {auth.user.nama.charAt(0)}
                                     </div>
                                 </Button>
@@ -69,7 +71,7 @@ export default function VisitorLayout({ children }: Props) {
                                     </div>
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem onClick={handleLogout} className="text-rose-600 focus:text-rose-600 focus:bg-rose-50 rounded-2xl p-4 font-bold flex items-center gap-3 cursor-pointer">
+                                <DropdownMenuItem onClick={handleLogout} className="text-red-600 focus:text-red-600 focus:bg-red-50 rounded-2xl p-4 font-bold flex items-center gap-3 cursor-pointer">
                                     <LogOut className="w-4 h-4" />
                                     <span>Keluar</span>
                                 </DropdownMenuItem>
@@ -78,9 +80,14 @@ export default function VisitorLayout({ children }: Props) {
                     </div>
 
                     {/* Mobile Toggle */}
-                    <button className="md:hidden p-2 text-slate-900" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                        {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
-                    </button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="md:hidden rounded-xl text-white hover:bg-white/10"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </Button>
                 </div>
 
                 {/* Mobile Menu Overlay */}
@@ -89,7 +96,7 @@ export default function VisitorLayout({ children }: Props) {
                         <Link href="/dashboard" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beranda</Link>
                         <Link href="/dashboard#tickets" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beli Tiket</Link>
                         <Link href="/dashboard#my-tickets" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Tiket Saya</Link>
-                        <button className="p-4 font-black text-rose-600 text-left uppercase tracking-widest text-sm" onClick={handleLogout}>Keluar</button>
+                        <button className="p-4 font-black text-red-600 text-left uppercase tracking-widest text-sm" onClick={handleLogout}>Keluar</button>
                     </div>
                 )}
             </nav>
@@ -107,10 +114,10 @@ export default function VisitorLayout({ children }: Props) {
                             <span className="text-xl font-black tracking-tighter italic uppercase">Bantimurung</span>
                         </div>
                         <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
-                            <a href="#" className="hover:text-rose-500 transition-colors">Tentang Kami</a>
-                            <a href="#" className="hover:text-rose-500 transition-colors">Bantuan</a>
-                            <a href="#" className="hover:text-rose-500 transition-colors">Syarat & Ketentuan</a>
-                            <a href="#" className="hover:text-rose-500 transition-colors">Privasi</a>
+                            <a href="#" className="hover:text-red-500 transition-colors">Tentang Kami</a>
+                            <a href="#" className="hover:text-red-500 transition-colors">Bantuan</a>
+                            <a href="#" className="hover:text-red-500 transition-colors">Syarat & Ketentuan</a>
+                            <a href="#" className="hover:text-red-500 transition-colors">Privasi</a>
                         </div>
                         <div className="text-center md:text-right">
                             <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">© {new Date().getFullYear()} Bantimurung Waterpark. Maros Regancy.</p>
