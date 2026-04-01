@@ -179,7 +179,7 @@ export default function Welcome({
                         className="md:hidden rounded-xl text-white hover:bg-white/10"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        {mobileMenuOpen ? <X className="font-bold w-16 h-16" /> : <Menu className="font-bold w-16 h-16" />}
                     </Button>
                 </div>
 
