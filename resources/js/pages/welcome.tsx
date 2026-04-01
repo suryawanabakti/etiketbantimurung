@@ -175,11 +175,10 @@ export default function Welcome({
                     {/* Mobile Toggle */}
                     <Button
                         variant="ghost"
-                        size="icon"
-                        className="md:hidden rounded-xl text-white hover:bg-white/10"
+                        className="md:hidden w-12 h-12 rounded-xl text-white hover:bg-white/10 p-0 flex items-center justify-center [&>svg]:!w-7 [&>svg]:!h-7"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X className="font-bold w-16 h-16" /> : <Menu className="font-bold w-16 h-16" />}
+                        {mobileMenuOpen ? <X size={0} strokeWidth={1.5} /> : <Menu size={0} strokeWidth={1.5} />}
                     </Button>
                 </div>
 
@@ -249,7 +248,84 @@ export default function Welcome({
                     </div>
                 </section>
 
-                <section id="tickets" className="py-20 md:py-32 bg-slate-50 scroll-mt-24">
+                {/* Gallery Section */}
+                <section className="py-24 bg-slate-50" id="gallery">
+                    <div className="max-w-7xl mx-auto px-6 md:px-10">
+                        <div className="text-center mb-16 space-y-4">
+                            <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Galeri Wisata</Badge>
+                            <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight uppercase italic tracking-tighter">
+                                Potret <span className="text-red-800">Bantimurung</span>
+                            </h2>
+                            <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                                Intip keindahan memukau dari The Kingdom of Butterfly! Mulai dari kemegahan air terjun, pesona alam hingga keseruan menjelajah setiap sudut Bantimurung Maros.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {/* Gambar 1 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80">
+                                <img src="https://nativeindonesia.com/foto/2020/10/landmark-bantimurung.jpg" alt="Landmark Bantimurung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Landmark Khas</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Patung maskot kupu-kupu raksasa ikonik yang menyambut kedatangan setiap pengunjung.</p>
+                                </div>
+                            </div>
+
+                            {/* Gambar 2 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80 md:col-span-2 lg:col-span-1">
+                                <img src="https://nativeindonesia.com/foto/2020/10/landscape-keindahan-air-terjun-bantimurung.jpg" alt="Keindahan Air Terjun" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Air Terjun Bantimurung</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Aliran air terjun deras di tengah rimbunnya hutan tropis karst alami.</p>
+                                </div>
+                            </div>
+
+                            {/* Gambar 3 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80">
+                                <img src="https://nativeindonesia.com/wp-content/uploads/2020/10/jalan-menuju-air-terjun-bantimurung.jpg" alt="Jalan Menuju Air Terjun" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Akses yang Nyaman</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Jalan pendestrian berkanopi rindang yang memanjakan langkah kaki Anda menuju area utama.</p>
+                                </div>
+                            </div>
+
+                            {/* Gambar 4 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80 lg:col-span-2">
+                                <img src="https://nativeindonesia.com/foto/2020/10/ragam-keseruan-di-air-terjun.jpg" alt="Ragam Keseruan" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Keseruan Tanpa Batas</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Bermain air, bersantai di tepian, dan menghabiskan waktu berkualitas bersama keluarga dan kerabat terdekat.</p>
+                                </div>
+                            </div>
+
+                            {/* Gambar 5 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80">
+                                <img src="https://nativeindonesia.com/wp-content/uploads/2021/07/Menjelajah-Goa.jpg" alt="Menjelajah Goa" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Pesona Gua Karst</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Eksplorasi stalaktit dan stalagmit batuan karst yang terbentuk secara alami sejak ribuan tahun lalu.</p>
+                                </div>
+                            </div>
+
+                            {/* Gambar 6 */}
+                            <div className="group relative rounded-3xl overflow-hidden shadow-lg h-80 md:col-span-2 lg:col-span-3">
+                                <img src="https://nativeindonesia.com/wp-content/uploads/2021/07/serunya-main-air.jpg" alt="Serunya Main Air" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 object-top" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold uppercase tracking-tight mb-1">Pemandian Alam Segar</h3>
+                                    <p className="text-sm text-slate-200 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Tempat ideal untuk berenang dan bermain air bersih pegunungan di bawah teduhnya alam Maros.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tickets" className="py-20 md:py-32 bg-white scroll-mt-24">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="text-center mb-16 md:mb-20 space-y-4">
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Pilih Petualanganmu</Badge>

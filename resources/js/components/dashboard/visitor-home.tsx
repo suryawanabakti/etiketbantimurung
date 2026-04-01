@@ -91,10 +91,10 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
 
                 {/* Booking Section */}
                 <section id="tickets" className="space-y-8 md:space-y-12">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
-                        <div className="space-y-2 md:space-y-3">
-                            <Badge className="bg-red-100 text-red-600 border-none font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] text-[10px]">Pemesanan Tiket</Badge>
-                            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 uppercase italic">Beli Tiket Baru</h2>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div className="space-y-1">
+                            <h2 className="text-2xl font-bold tracking-tight">Beli Tiket Baru</h2>
+                            <p className="text-muted-foreground">Pilih tiket liburan Anda</p>
                         </div>
                     </div>
 
@@ -122,79 +122,80 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
 
                 {/* My Tickets Section */}
                 <section id="my-tickets" className="space-y-8 md:space-y-12 pt-16 md:pt-24 border-t border-slate-200">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
-                        <div className="space-y-2 md:space-y-3">
-                            <Badge className="bg-emerald-100 text-emerald-600 border-none font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] text-[10px]">Tiket Anda</Badge>
-                            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 uppercase italic">Riwayat & Tiket Aktif</h2>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div className="space-y-1">
+                            <h2 className="text-2xl font-bold tracking-tight">Riwayat & Tiket Aktif</h2>
+                            <p className="text-muted-foreground">Daftar tiket yang Anda miliki</p>
                         </div>
                         <div className="flex gap-4">
-                            <div className="bg-white px-4 md:px-6 py-2 md:py-3 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3">
-                                <span className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-widest">Aktif</span>
-                                <span className="text-xl md:text-2xl font-black text-emerald-600">{stats.tiket_aktif}</span>
+                            <div className="bg-background px-4 py-2 rounded-lg shadow-sm border flex items-center gap-3">
+                                <span className="text-sm font-medium text-muted-foreground">Aktif</span>
+                                <span className="text-xl font-bold text-primary">{stats.tiket_aktif}</span>
                             </div>
-                            <div className="bg-white px-4 md:px-6 py-2 md:py-3 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3">
-                                <span className="text-[10px] md:text-sm font-black text-slate-400 uppercase tracking-widest">Total</span>
-                                <span className="text-xl md:text-2xl font-black text-slate-900">{stats.total_pesanan}</span>
+                            <div className="bg-background px-4 py-2 rounded-lg shadow-sm border flex items-center gap-3">
+                                <span className="text-sm font-medium text-muted-foreground">Total</span>
+                                <span className="text-xl font-bold">{stats.total_pesanan}</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="grid gap-8">
                         {myTickets.data.map((order) => (
-                            <Card key={order.id} className="rounded-[32px] md:rounded-[40px] border-none shadow-xl shadow-slate-200/50 overflow-hidden bg-white group transition-all hover:scale-[1.01]">
+                            <Card key={order.id} className="overflow-hidden">
                                 <div className="flex flex-col md:flex-row">
-                                    <div className={`p-8 md:p-10 md:w-64 lg:w-72 flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 ${order.status_pemesanan === 'paid' ? 'bg-emerald-50 text-emerald-600 border-b md:border-b-0 md:border-r border-emerald-100' : 'bg-slate-50 text-slate-400 border-b md:border-b-0 md:border-r border-slate-100'}`}>
-                                        <div className={`p-4 md:p-6 rounded-2xl md:rounded-[32px] ${order.status_pemesanan === 'paid' ? 'bg-emerald-100 shadow-xl shadow-emerald-200' : 'bg-slate-100'}`}>
-                                            <Ticket className="w-8 h-8 md:w-12 md:h-12 stroke-[2.5]" />
+                                    <div className={`p-6 md:w-64 flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 ${order.status_pemesanan === 'paid' ? 'bg-primary/5 border-b md:border-b-0 md:border-r' : 'bg-muted/50 border-b md:border-b-0 md:border-r'}`}>
+                                        <div className={`p-4 rounded-full ${order.status_pemesanan === 'paid' ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                            <Ticket className="w-8 h-8" />
                                         </div>
                                         <div className="text-right md:text-center">
-                                            <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] italic block mb-1">Status Tiket</span>
-                                            <Badge className={`font-black uppercase tracking-widest px-3 py-1 rounded-full text-[10px] ${order.status_pemesanan === 'paid' ? 'bg-emerald-600' : 'bg-slate-400'}`}>
+                                            <Badge variant={order.status_pemesanan === 'paid' ? 'default' : 'secondary'}>
                                                 {order.status_pemesanan === 'paid' ? 'Aktif' : order.status_pemesanan}
                                             </Badge>
                                         </div>
                                     </div>
-                                    <div className="flex-1 p-8 md:p-10 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-10 items-center">
-                                        <div className="space-y-4 text-center md:text-left w-full">
-                                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight uppercase italic">{order.tiket.nama_tiket}</h3>
-                                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 text-xs text-slate-400 font-bold">
-                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Timer className="w-3 h-3 text-red-500" /> {new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                                                <span className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100"><Info className="w-3 h-3 text-red-500" /> ID #{order.id}</span>
-                                                <Badge className="bg-slate-900 text-white rounded-lg px-3 py-1 text-[10px] font-black uppercase tracking-widest">{order.jumlah_tiket} Orang</Badge>
+                                    <div className="flex-1 p-6 md:p-8 flex flex-col md:grid md:grid-cols-2 gap-6 items-center">
+                                        <div className="space-y-3 text-center md:text-left w-full">
+                                            <h3 className="text-xl font-bold tracking-tight">{order.tiket.nama_tiket}</h3>
+                                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm text-muted-foreground">
+                                                <span className="flex items-center gap-1"><Timer className="w-4 h-4" /> {new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                                                <span className="flex items-center gap-1"><Info className="w-4 h-4" /> #{order.id}</span>
+                                                <Badge variant="outline">{order.jumlah_tiket} Orang</Badge>
                                             </div>
                                         </div>
                                         <div className="flex flex-col md:items-end gap-4 text-center md:text-right w-full">
                                             <div>
-                                                <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-1">Total Transaksi</p>
-                                                <p className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter">{formatCurrency(order.jumlah_tiket * order.tiket.harga)}</p>
+                                                <p className="text-sm text-muted-foreground mb-1">Total Transaksi</p>
+                                                <p className="text-2xl font-bold">{formatCurrency(order.jumlah_tiket * order.tiket.harga)}</p>
                                             </div>
-                                            <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                                            <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                                                 {order.status_pemesanan === 'pending' && (
                                                     <Button
-                                                        className="flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest bg-amber-500 hover:bg-amber-600 text-white shadow-2xl shadow-amber-200 transition-all"
+                                                        variant="default"
+                                                        className="w-full sm:w-auto"
                                                         onClick={() => router.post(`/booking/${order.id}/pay`, {}, { preserveScroll: true })}
                                                     >
-                                                        <CreditCard className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2.5]" />
+                                                        <CreditCard className="w-4 h-4 mr-2" />
                                                         Bayar Sekarang
                                                     </Button>
                                                 )}
                                                 {order.status_pemesanan === 'paid' && order.tiket_qr && (
                                                     <Button
-                                                        className={`flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest shadow-2xl transition-all ${order.tiket_qr.status_tiket === 'aktif' ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-200' : 'bg-slate-100 text-slate-400'}`}
+                                                        variant={order.tiket_qr.status_tiket === 'aktif' ? "default" : "secondary"}
+                                                        className="w-full sm:w-auto"
                                                         onClick={() => setShowQr(order)}
                                                         disabled={order.tiket_qr.status_tiket !== 'aktif'}
                                                     >
-                                                        <QrCode className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2.5]" />
+                                                        <QrCode className="w-4 h-4 mr-2" />
                                                         {order.tiket_qr.status_tiket === 'aktif' ? 'Lihat QR' : 'Terpakai'}
                                                     </Button>
                                                 )}
                                                 {order.status_pemesanan === 'paid' && (
                                                     <Button
                                                         variant="outline"
-                                                        className="flex-1 md:flex-none rounded-xl md:rounded-2xl px-6 md:px-8 h-12 md:h-14 font-black uppercase tracking-widest border-slate-200 hover:bg-slate-50 transition-all text-slate-600"
+                                                        className="w-full sm:w-auto"
                                                         onClick={() => router.visit(`/invoice/${order.id}`)}
                                                     >
-                                                        <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2.5] text-red-500" />
+                                                        <FileText className="w-4 h-4 mr-2" />
                                                         Invoice
                                                     </Button>
                                                 )}
@@ -226,62 +227,56 @@ export default function VisitorHome({ stats, myTickets, tikets }: Props) {
 
             {/* QR Modal */}
             <Dialog open={!!showQr} onOpenChange={() => setShowQr(null)}>
-                <DialogContent className="sm:max-w-md rounded-[48px] border-none shadow-2xl p-0 overflow-hidden bg-white">
-                    <DialogHeader className="p-10 bg-red-600 text-white rounded-t-[48px] text-center">
-                        <DialogTitle className="text-4xl font-black tracking-tighter uppercase italic">E-Tiket Wisata</DialogTitle>
-                        <DialogDescription className="text-red-100 text-lg font-medium mt-2">
-                            Tunjukkan QR Code ini pada mesin scan loket.
+                <DialogContent className="sm:max-w-sm rounded-xl">
+                    <DialogHeader className="pt-8 px-6 text-center text-primary">
+                        <DialogTitle className="text-2xl font-bold tracking-tight">E-Tiket Wisata</DialogTitle>
+                        <DialogDescription className="text-center text-muted-foreground">
+                            Tunjukkan QR Code ini pada saat masuk.
                         </DialogDescription>
                     </DialogHeader>
                     {showQr && (
-                        <div className="flex flex-col items-center p-10 space-y-10">
-                            <div className="p-8 bg-slate-50 rounded-[56px] shadow-inner border-4 border-slate-100 relative group overflow-hidden">
+                        <div className="flex flex-col items-center justify-center p-6 space-y-6">
+                            <div className="bg-white p-4 rounded-xl border border-border shadow-sm">
                                 <img
                                     src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${showQr.tiket_qr.kode_qr}`}
                                     alt="QR Code Tiket"
-                                    className="w-72 h-72 relative z-10 transition-transform group-hover:scale-105 duration-500"
+                                    className="w-64 h-64"
                                 />
                             </div>
 
-                            <div className="text-center w-full space-y-6">
-                                <div className="bg-slate-900 py-4 rounded-3xl shadow-2xl">
-                                    <p className="font-mono text-3xl font-black tracking-[0.4em] text-white pl-[0.4em] uppercase italic">{showQr.tiket_qr.kode_qr}</p>
+                            <div className="text-center space-y-2">
+                                <div className="bg-muted py-2 px-6 rounded-md">
+                                    <p className="font-mono text-xl font-bold tracking-widest">{showQr.tiket_qr.kode_qr}</p>
                                 </div>
-                                <div className="space-y-1">
-                                    <p className="text-2xl font-black text-slate-900 uppercase tracking-tighter italic">{showQr.tiket.nama_tiket}</p>
-                                    <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Berlaku untuk {showQr.jumlah_tiket} orang pemegang tiket</p>
+                                <div className="pt-2">
+                                    <p className="font-bold">{showQr.tiket.nama_tiket}</p>
+
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4 w-full pt-4 border-t-2 border-slate-50">
+                            <div className="grid grid-cols-2 gap-3 w-full border-t pt-6">
                                 <Button
                                     variant="outline"
-                                    className="h-16 rounded-[24px] border-slate-200 text-slate-600 font-black uppercase tracking-widest hover:bg-slate-50"
                                     onClick={() => window.open(`https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${showQr.tiket_qr.kode_qr}`, '_blank')}
                                 >
-                                    <Download className="w-5 h-5 mr-3 text-red-600" />
+                                    <Download className="w-4 h-4 mr-2" />
                                     PNG
                                 </Button>
                                 <Button
                                     variant="outline"
-                                    className="h-16 rounded-[24px] border-slate-200 text-slate-600 font-black uppercase tracking-widest hover:bg-slate-50"
                                     onClick={() => window.print()}
                                 >
-                                    <Printer className="w-5 h-5 mr-3 text-red-600" />
+                                    <Printer className="w-4 h-4 mr-2" />
                                     Cetak
                                 </Button>
                                 <Button
-                                    className="w-full col-span-2 h-16 rounded-[24px] bg-slate-900 hover:bg-slate-800 text-white font-black uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
+                                    className="col-span-2 w-full"
                                     onClick={() => router.visit(`/invoice/${showQr.id}`)}
                                 >
-                                    <FileText className="w-5 h-5 text-red-500" />
+                                    <FileText className="w-4 h-4 mr-2" />
                                     Detail Invoice
                                 </Button>
                             </div>
-
-                            <p className="text-[10px] text-slate-300 font-black uppercase tracking-[0.3em] text-center max-w-[240px]">
-                                Sistem Verifikasi E-Tiket Elektronik <br />Bantimurung Maros
-                            </p>
                         </div>
                     )}
                 </DialogContent>
