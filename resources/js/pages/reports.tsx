@@ -207,9 +207,9 @@ export default function Reports({ stats }: Props) {
                             ))}
 
                             <div className="pt-4 mt-6 border-t">
-                                <Button variant="ghost" className="w-full text-xs font-medium text-muted-foreground hover:text-foreground">
+                                {/* <Button variant="ghost" className="w-full text-xs font-medium text-muted-foreground hover:text-foreground">
                                     Export Full Dataset <ChevronRight className="w-4 h-4 ml-1" />
-                                </Button>
+                                </Button> */}
                             </div>
                         </CardContent>
                     </Card>

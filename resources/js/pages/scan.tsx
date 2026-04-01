@@ -232,7 +232,7 @@ export default function ScanPage({ history = [] }: Props) {
                                 </div>
                                 <CardTitle className="text-2xl font-black tracking-tighter text-slate-900 uppercase italic">Scan Protocol</CardTitle>
                             </div>
-                            <CardDescription className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px]">
+                            <CardDescription className="text-white-400 font-bold uppercase tracking-[0.2em] text-[10px]">
                                 Position the QR code within the frame for automatic verification
                             </CardDescription>
                         </CardHeader>
