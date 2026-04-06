@@ -155,7 +155,7 @@ export default function Reports({ stats }: Props) {
                                     <div key={i} className="flex-1 flex flex-col items-center gap-3 group relative z-10 h-full justify-end">
                                         <div className="w-full relative flex items-end justify-center transition-all duration-300">
                                             <div
-                                                className="w-full max-w-[32px] bg-slate-200 dark:bg-slate-800 rounded-t-md group-hover:bg-slate-900 dark:group-hover:bg-white transition-all duration-300 ease-out"
+                                                className="w-full max-w-[32px] bg-red-500 dark:bg-red-500 rounded-t-md group-hover:bg-red-600 dark:group-hover:bg-red-500 transition-all duration-300 ease-out"
                                                 style={{ height: `${(item.revenue / maxVal) * 250}px` }}
                                             />
                                             <div className="absolute -top-10 opacity-0 group-hover:opacity-100 transition-all bg-foreground text-background text-xs font-semibold px-2 py-1 rounded shadow-lg whitespace-nowrap z-20 pointer-events-none">
@@ -199,7 +199,7 @@ export default function Reports({ stats }: Props) {
                                     </div>
                                     <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                                         <div
-                                            className="h-full bg-slate-900 dark:bg-white transition-all duration-700"
+                                            className="h-full bg-red-600 dark:bg-red-500 transition-all duration-700"
                                             style={{ width: `${(type.total_revenue / (stats.overview.total_pendapatan || 1)) * 100}%` }}
                                         />
                                     </div>

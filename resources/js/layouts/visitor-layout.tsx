@@ -93,7 +93,7 @@ export default function VisitorLayout({ children }: Props) {
                 {/* Mobile Menu Overlay */}
                 {mobileMenuOpen && (
                     <div className="absolute top-full left-4 right-4 bg-white rounded-[32px] shadow-2xl p-6 flex flex-col gap-4 md:hidden animate-in slide-in-from-top-4 duration-300 mt-2 border border-slate-100">
-                        <Link href="/dashboard" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beranda</Link>
+                        <Link href="/" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beranda</Link>
                         <Link href="/dashboard#tickets" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beli Tiket</Link>
                         <Link href="/dashboard#my-tickets" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Tiket Saya</Link>
                         <button className="p-4 font-black text-red-600 text-left uppercase tracking-widest text-sm" onClick={handleLogout}>Keluar</button>

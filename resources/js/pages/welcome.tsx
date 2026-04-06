@@ -95,7 +95,7 @@ export default function Welcome({
     };
 
     const scrollToTickets = () => {
-        document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('order-ticket')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -208,7 +208,7 @@ export default function Welcome({
                 <Features />
 
                 {/* Discover Section */}
-                <section className="py-24 bg-white overflow-hidden" id='about'>
+                <section className="py-16 bg-white overflow-hidden" id='about'>
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
                             <div className="w-full lg:w-1/2 space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
@@ -249,7 +249,7 @@ export default function Welcome({
                 </section>
 
                 {/* Gallery Section */}
-                <section className="py-24 bg-slate-50" id="gallery">
+                <section className="pt-16 pb-6 bg-slate-50" id="gallery">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="text-center mb-16 space-y-4">
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Galeri Wisata</Badge>
@@ -325,16 +325,16 @@ export default function Welcome({
                     </div>
                 </section>
 
-                <section id="tickets" className="py-20 md:py-32 bg-white scroll-mt-24">
+                <section id="tickets" className="pt-6 pb-12 md:pt-10 md:pb-20 bg-white scroll-mt-24">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
-                        <div className="text-center mb-16 md:mb-20 space-y-4">
+                        <div className="text-center mb-16 md:mb-20 space-y-4" id='order-ticket'>
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Pilih Petualanganmu</Badge>
                             <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-900 uppercase italic">Tiket Wisata Alam</h2>
                             <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed px-4">Pilih jenis tiket yang sesuai dengan kebutuhan kunjungan Anda ke Taman Nasional Bantimurung.</p>
                         </div>
 
                         {tikets.length > 0 ? (
-                            <div className="max-w-xl mx-auto">
+                            <div className="max-w-xl mx-auto" >
                                 <div className="bg-white rounded-[40px] shadow-2xl shadow-slate-200/50 overflow-hidden border border-slate-100 group transition-all duration-300 hover:shadow-red-900/10">
                                     <div className="bg-red-800 p-8 text-center relative overflow-hidden">
                                         <div className="absolute inset-0 opacity-10 bg-repeat bg-[length:20px_20px]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)" }}></div>
@@ -375,7 +375,7 @@ export default function Welcome({
 
 
             {/* Footer */}
-            <footer className="bg-gray-900 text-gray-400 py-24 border-t-8 border-red-800">
+            <footer className="bg-gray-900 text-gray-400 py-16 border-t-8 border-red-800">
                 <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 items-start">
                     <div className="space-y-8 text-center md:text-left">
                         <div className="flex items-center gap-3 justify-center md:justify-start">

@@ -21,7 +21,7 @@ export default function Features() {
     ];
 
     return (
-        <section id="features" className="py-24 bg-[#fff9f9]">
+        <section id="features" className="py-16 bg-[#fff9f9]">
             <div className="max-w-7xl mx-auto px-6 md:px-8 text-center text-slate-900">
                 <div className="mb-16">
                     <span className="bg-red-100 text-red-800 rounded-full px-6 py-2 text-[11px] font-bold uppercase tracking-widest inline-block mb-6 shadow-sm">
