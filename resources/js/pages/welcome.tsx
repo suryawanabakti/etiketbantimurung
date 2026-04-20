@@ -1,8 +1,9 @@
+import AppLogoIcon from '@/components/app-logo-icon';
 import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage, router } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
-import { Ticket, Menu, X, LogOut, ChevronRight, User, Badge as BadgeIcon } from 'lucide-react';
+import { Ticket, Menu, X, LogOut, ChevronRight, User, Badge as BadgeIcon, MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -111,9 +112,7 @@ export default function Welcome({
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-red-800/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent bg-gradient-to-b from-black/50 to-transparent py-5 md:py-7'}`}>
                 <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
                     <div className="flex items-center gap-2 md:gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                        <div className="bg-white p-1.5 md:p-2 rounded-full text-red-800 shadow-md transition-transform group-hover:scale-105">
-                            <Ticket className="w-4 h-4 md:w-5 md:h-5" />
-                        </div>
+                        <AppLogoIcon className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white shadow-md transition-transform group-hover:scale-105 object-cover" />
                         <span className="text-lg md:text-xl font-bold tracking-tight uppercase text-white">Bantimurung</span>
                     </div>
 
@@ -123,6 +122,7 @@ export default function Welcome({
                             <a href="#features" className="hover:text-white transition-colors">Fitur</a>
                             <a href="#tickets" className="hover:text-white transition-colors">Tiket</a>
                             <a href="#about" className="hover:text-white transition-colors">Tentang</a>
+                            <a href="#contact" className="hover:text-white transition-colors">Kontak</a>
                         </div>
 
                         <div className="flex items-center gap-4">
@@ -185,8 +185,10 @@ export default function Welcome({
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
                     <div className="md:hidden absolute top-full left-4 right-4 bg-white rounded-[32px] shadow-2xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-4 duration-300 mt-2 border border-slate-100">
+                        <a href="#home" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beranda</a>
                         <a href="#features" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Fitur</a>
                         <button onClick={() => { setMobileMenuOpen(false); scrollToTickets(); }} className="p-4 font-black text-slate-900 border-b border-slate-50 text-left uppercase tracking-widest text-sm">Tiket</button>
+                        <a href="#contact" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Kontak</a>
                         {auth.user ? (
                             <>
                                 <Link href={dashboard()} className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
@@ -370,6 +372,69 @@ export default function Welcome({
                         )}
                     </div>
                 </section>
+                <section id="contact" className="py-20 md:py-32 bg-slate-50 scroll-mt-20">
+                    <div className="max-w-7xl mx-auto px-6 md:px-10">
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-10">
+                                <div className="space-y-4">
+                                    <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Hubungi Kami</Badge>
+                                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight uppercase italic tracking-tighter">
+                                        Rencanakan <span className="text-red-800">Kunjungan</span> Anda
+                                    </h2>
+                                    <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-lg">
+                                        Punya pertanyaan tentang fasilitas atau butuh bantuan pemesanan? Tim kami siap melayani Anda.
+                                    </p>
+                                </div>
+
+                                <div className="space-y-6">
+                                    <div className="flex items-start gap-4 group">
+                                        <div className="bg-white p-4 rounded-2xl shadow-sm text-red-800 group-hover:bg-red-800 group-hover:text-white transition-all duration-300 border border-slate-100">
+                                            <MapPin className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Lokasi</p>
+                                            <p className="text-slate-900 font-bold leading-relaxed">Jl. Poros Maros-Bone KM.12, Bantimurung, Maros, Sulawesi Selatan 90561</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-4 group">
+                                        <div className="bg-white p-4 rounded-2xl shadow-sm text-red-800 group-hover:bg-red-800 group-hover:text-white transition-all duration-300 border border-slate-100">
+                                            <Phone className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">WhatsApp</p>
+                                            <p className="text-slate-900 font-bold">+62 877-1352-3594</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-4 group">
+                                        <div className="bg-white p-4 rounded-2xl shadow-sm text-red-800 group-hover:bg-red-800 group-hover:text-white transition-all duration-300 border border-slate-100">
+                                            <Mail className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Email</p>
+                                            <p className="text-slate-900 font-bold">info@bantimurung.maros.go.id</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="relative group">
+                                <div className="absolute -inset-4 bg-red-800/5 rounded-[48px] blur-2xl transition-all duration-500 group-hover:bg-red-800/10" />
+                                <div className="relative bg-white p-4 rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden h-[450px]">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127193.55585260599!2d119.59261167688932!3d-4.973109647915603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbef7f488eb5355%3A0x46b6dae8c1291f1e!2skawasan%20wisata%20Bantimurung!5e0!3m2!1sid!2sid!4v1776700000895!5m2!1sid!2sid"
+                                        className="w-full h-full rounded-[32px]"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
 
@@ -379,9 +444,7 @@ export default function Welcome({
                 <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 items-start">
                     <div className="space-y-8 text-center md:text-left">
                         <div className="flex items-center gap-3 justify-center md:justify-start">
-                            <div className="bg-white p-2 text-red-800 rounded-xl shadow-lg">
-                                <Ticket className="w-6 h-6" />
-                            </div>
+                            <AppLogoIcon className="w-10 h-10 md:w-12 md:h-12 rounded-xl shadow-lg border-2 border-white object-cover" />
                             <span className="text-3xl font-black text-white tracking-tighter italic uppercase">Bantimurung</span>
                         </div>
                         <p className="text-xl leading-relaxed max-w-md font-medium text-gray-300">
@@ -402,6 +465,29 @@ export default function Welcome({
                     </div>
                 </div>
             </footer>
+
+            {/* Floating WhatsApp Button */}
+            <a
+                href="https://wa.me/6287713523594"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fixed bottom-6 right-6 z-[60] group flex items-center gap-3"
+                aria-label="Chat WhatsApp"
+            >
+                <div className="bg-white px-4 py-2 rounded-2xl shadow-xl border border-slate-100 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden md:block">
+                    <p className="text-sm font-black text-slate-900 uppercase tracking-widest whitespace-nowrap">Hubungi Kami</p>
+                </div>
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 hover:scale-110 active:scale-95 transition-all duration-300">
+                    <svg
+                        viewBox="0 0 24 24"
+                        className="w-7 h-7 md:w-8 md:h-8 fill-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                </div>
+            </a>
         </div>
+
     );
 }

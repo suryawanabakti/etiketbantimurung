@@ -1,3 +1,4 @@
+import AppLogoIcon from '@/components/app-logo-icon';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -25,9 +26,7 @@ export default function Register() {
                 </div>
 
                 <Link href={home()} className="relative z-10 flex items-center gap-2 group w-fit">
-                    <div className="bg-primary p-2 rounded-xl text-primary-foreground shadow-lg transition-transform group-hover:scale-105">
-                        <Ticket className="w-5 h-5" />
-                    </div>
+                    <AppLogoIcon className="w-10 h-10 rounded-xl border-2 border-white/20 shadow-lg transition-transform group-hover:scale-105 object-cover" />
                     <span className="text-xl font-bold tracking-tight text-white transition-colors">Bantimurung</span>
                 </Link>
 

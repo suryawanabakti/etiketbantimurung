@@ -40,7 +40,9 @@ return [
         'token' => env('TWILIO_AUTH_TOKEN', '00e5479e341a4fdd33da477b4ad04fa7'),
         'whatsapp_from' => env('TWILIO_WHATSAPP_FROM', '+14155238886'),
     ],
-
+    'fonnte' => [
+        'token' => env('FONNTE_TOKEN'),
+    ],
     'mocean' => [
         'api_key' => env('MOCEAN_API_KEY'),
         'api_secret' => env('MOCEAN_API_SECRET'),

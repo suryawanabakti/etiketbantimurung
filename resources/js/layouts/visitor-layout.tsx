@@ -1,3 +1,4 @@
+import AppLogoIcon from '@/components/app-logo-icon';
 import { dashboard, home, login, register } from '@/routes';
 import { Link, usePage, router } from '@inertiajs/react';
 import { type ReactNode, useState, useEffect } from 'react';
@@ -41,9 +42,7 @@ export default function VisitorLayout({ children }: Props) {
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-red-800/95 backdrop-blur-md shadow-md py-3' : 'bg-red-800 py-3 md:py-4'}`}>
                 <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
                     <Link href={'/'} className="flex items-center gap-2 md:gap-3 group">
-                        <div className="bg-white p-1.5 md:p-2 rounded-full text-red-800 shadow-md transition-transform group-hover:scale-105">
-                            <Ticket className="w-4 h-4 md:w-5 md:h-5" />
-                        </div>
+                        <AppLogoIcon className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white shadow-md transition-transform group-hover:scale-105 object-cover" />
                         <span className="text-lg md:text-xl font-bold tracking-tight uppercase text-white">Bantimurung</span>
                     </Link>
 
@@ -108,9 +107,7 @@ export default function VisitorLayout({ children }: Props) {
                 <div className="max-w-7xl mx-auto px-6 md:px-10">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
                         <div className="flex items-center gap-3 grayscale opacity-60">
-                            <div className="bg-slate-800 p-2 rounded-xl text-white">
-                                <Ticket className="w-5 h-5" />
-                            </div>
+                            <AppLogoIcon className="w-8 h-8 rounded-xl shadow-lg border border-white/50 object-cover" />
                             <span className="text-xl font-black tracking-tighter italic uppercase">Bantimurung</span>
                         </div>
                         <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">

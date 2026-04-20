@@ -3,17 +3,16 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 
 class WhatsAppService
 {
     protected $apiToken;
-    protected $from;
-    protected $url = 'https://rest.moceanapi.com/rest/2/send-message/whatsapp';
+    protected $url = 'https://api.fonnte.com/send';
 
     public function __construct()
     {
-        $this->apiToken = config('services.mocean.api_token');
-        $this->from = config('services.mocean.from');
+        $this->apiToken = config('services.fonnte.token');
     }
 
     public function sendWhatsApp($to, $message)
@@ -27,33 +26,30 @@ class WhatsAppService
         $to = preg_replace('/[^0-9]/', '', $to);
 
         $payload = [
-            'mocean-from' => $this->from,
-            'mocean-to' => $to,
-            'mocean-content' => [
-                'type' => 'text',
-                'text' => $message
-            ]
+            'target' => $to,
+            'message' => $message,
         ];
 
         try {
-            $response = \Illuminate\Support\Facades\Http::withToken($this->apiToken)
-                ->post($this->url, $payload);
+            $response = Http::withHeaders([
+                'Authorization' => $this->apiToken
+            ])->post($this->url, $payload);
 
             if ($response->failed()) {
-                Log::error('Mocean API Error: ' . $response->body());
+                Log::error('Fonnte API Error: ' . $response->body());
                 return false;
             }
 
             $result = $response->json();
 
-            if (isset($result['status']) && $result['status'] == 0) {
+            if (isset($result['status']) && $result['status'] == true) {
                 return true;
             }
 
-            Log::error('Mocean API Error Response: ' . $response->body());
+            Log::error('Fonnte API Error Response: ' . $response->body());
             return false;
         } catch (\Exception $e) {
-            Log::error('Mocean API Exception: ' . $e->getMessage());
+            Log::error('Fonnte API Exception: ' . $e->getMessage());
             return false;
         }
     }
