@@ -98,7 +98,7 @@ export default function Welcome({
     const scrollToTickets = () => {
         const element = document.getElementById('tickets');
         if (element) {
-            const offset = 80; // Offset for fixed navbar
+            const offset = 20; // Reduced offset to scroll further down
             const bodyRect = document.body.getBoundingClientRect().top;
             const elementRect = element.getBoundingClientRect().top;
             const elementPosition = elementRect - bodyRect;
@@ -339,7 +339,7 @@ export default function Welcome({
                     </div>
                 </section>
 
-                <section id="tickets" className="pt-6 pb-12 md:pt-10 md:pb-20 bg-white scroll-mt-24">
+                <section id="tickets" className="pt-6 pb-12 md:pt-10 md:pb-20 bg-white scroll-mt-10">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="text-center mb-16 md:mb-20 space-y-4" id='order-ticket'>
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Pilih Petualanganmu</Badge>
