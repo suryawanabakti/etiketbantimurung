@@ -16,8 +16,6 @@ import {
 import { Badge } from '@/components/ui/badge';
 import Hero from '@/components/landing/hero';
 import Features from '@/components/landing/features';
-import TicketList from '@/components/landing/ticket-list';
-import BookingSummary from '@/components/landing/booking-summary';
 
 interface Tiket {
     id: number;
@@ -222,7 +220,7 @@ export default function Welcome({
                 <Features />
 
                 {/* Discover Section */}
-                <section className="py-16 bg-white overflow-hidden" id='about'>
+                <section className="pt-4 pb-16 md:py-32 bg-white overflow-hidden scroll-mt-16" id='about'>
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
                             <div className="w-full lg:w-1/2 space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
@@ -263,7 +261,7 @@ export default function Welcome({
                 </section>
 
                 {/* Gallery Section */}
-                <section className="pt-16 pb-6 bg-slate-50" id="gallery">
+                <section className="pt-4 pb-6 md:pt-16 md:pb-6 bg-slate-50 scroll-mt-16" id="gallery">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="text-center mb-16 space-y-4">
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Galeri Wisata</Badge>
@@ -339,7 +337,7 @@ export default function Welcome({
                     </div>
                 </section>
 
-                <section id="tickets" className="pt-6 pb-12 md:pt-10 md:pb-20 bg-white scroll-mt-10">
+                <section id="tickets" className="pt-4 pb-12 md:pt-10 md:pb-20 bg-white scroll-mt-16">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="text-center mb-16 md:mb-20 space-y-4" id='order-ticket'>
                             <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Pilih Petualanganmu</Badge>
@@ -384,16 +382,17 @@ export default function Welcome({
                         )}
                     </div>
                 </section>
-                <section id="contact" className="py-20 md:py-32 bg-slate-50 scroll-mt-20">
+                <section id="contact" className="pt-4 pb-12 md:py-32 bg-slate-50 scroll-mt-16">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
                             <div className="space-y-10">
-                                <div className="space-y-4">
-                                    <Badge className="bg-red-100 text-red-800 border-none font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] text-[10px]">Hubungi Kami</Badge>
-                                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight uppercase italic tracking-tighter">
-                                        Rencanakan <span className="text-red-800">Kunjungan</span> Anda
+                                <div className="space-y-6">
+                                    <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] uppercase italic tracking-tighter">
+                                        Rencanakan <br className="hidden md:block" />
+                                        <span className="text-red-800">Kunjungan</span> <br />
+                                        Anda
                                     </h2>
-                                    <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-lg">
+                                    <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-lg">
                                         Punya pertanyaan tentang fasilitas atau butuh bantuan pemesanan? Tim kami siap melayani Anda.
                                     </p>
                                 </div>
@@ -433,7 +432,7 @@ export default function Welcome({
 
                             <div className="relative group">
                                 <div className="absolute -inset-4 bg-red-800/5 rounded-[48px] blur-2xl transition-all duration-500 group-hover:bg-red-800/10" />
-                                <div className="relative bg-white p-4 rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden h-[450px]">
+                                <div className="relative bg-white p-3 md:p-4 rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden h-[400px] md:h-[500px]">
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127193.55585260599!2d119.59261167688932!3d-4.973109647915603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbef7f488eb5355%3A0x46b6dae8c1291f1e!2skawasan%20wisata%20Bantimurung!5e0!3m2!1sid!2sid!4v1776700000895!5m2!1sid!2sid"
                                         className="w-full h-full rounded-[32px]"
@@ -442,6 +441,19 @@ export default function Welcome({
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
                                     />
+                                    <div className="absolute top-8 left-8">
+                                        <a
+                                            href="https://maps.app.goo.gl/46b6dae8c1291f1e"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-2xl shadow-xl border border-white/20 flex items-center gap-2 hover:bg-white transition-all group/map"
+                                        >
+                                            <span className="text-sm font-black text-blue-600 uppercase tracking-wider">Buka di Maps</span>
+                                            <svg className="w-4 h-4 text-blue-600 transition-transform group-hover/map:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
