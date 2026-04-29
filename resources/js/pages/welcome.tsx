@@ -414,7 +414,7 @@ export default function Welcome({
                                         </div>
                                         <div>
                                             <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">WhatsApp</p>
-                                            <p className="text-slate-900 font-bold">+62 89525632349</p>
+                                            <p className="text-slate-900 font-bold">+6287713523594</p>
                                         </div>
                                     </div>
 
@@ -492,7 +492,7 @@ export default function Welcome({
 
             {/* Floating WhatsApp Button */}
             <a
-                href="https://wa.me/6289525632349"
+                href="https://wa.me/6287713523594"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fixed bottom-6 right-6 z-[60] group flex items-center gap-3"
