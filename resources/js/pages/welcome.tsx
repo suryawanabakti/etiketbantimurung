@@ -414,7 +414,7 @@ export default function Welcome({
                                         </div>
                                         <div>
                                             <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">WhatsApp</p>
-                                            <p className="text-slate-900 font-bold">+6289525632349</p>
+                                            <p className="text-slate-900 font-bold">+62 89525632349</p>
                                         </div>
                                     </div>
 
