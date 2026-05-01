@@ -3,7 +3,7 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage, router } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
-import { Ticket, Menu, X, LogOut, ChevronRight, User, Badge as BadgeIcon, MapPin, Phone, Mail } from 'lucide-react';
+import { Ticket, Menu, X, LogOut, ChevronRight, User, Badge as BadgeIcon, MapPin, Phone, Mail, Star, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -25,12 +25,26 @@ interface Tiket {
     tanggal_berlaku: string | null;
 }
 
+interface Review {
+    id: number;
+    user_id: number;
+    rating: number;
+    komentar: string;
+    created_at: string;
+    user: {
+        id: number;
+        nama: string;
+    };
+}
+
 export default function Welcome({
     canRegister = true,
     tikets = [],
+    reviews = [],
 }: {
     canRegister?: boolean;
     tikets?: Tiket[];
+    reviews?: Review[];
 }) {
     const { auth, flash } = usePage<SharedData>().props as any;
     const [isScrolled, setIsScrolled] = useState(false);
@@ -38,6 +52,9 @@ export default function Welcome({
     const [selectedTiket, setSelectedTiket] = useState<Tiket | null>(null);
     const [jumlah, setJumlah] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [rating, setRating] = useState(5);
+    const [komentar, setKomentar] = useState('');
+    const [reviewLoading, setReviewLoading] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,6 +108,22 @@ export default function Welcome({
 
     const handleLogout = () => {
         router.post('/logout');
+    };
+
+    const submitReview = (e: React.FormEvent) => {
+        e.preventDefault();
+        setReviewLoading(true);
+        router.post('/reviews', {
+            rating,
+            komentar,
+        }, {
+            onFinish: () => setReviewLoading(false),
+            preserveScroll: true,
+            onSuccess: () => {
+                setKomentar('');
+                setRating(5);
+            }
+        });
     };
 
     const scrollToTickets = () => {
@@ -459,11 +492,102 @@ export default function Welcome({
                         </div>
                     </div>
                 </section>
-            </main>
 
+                {/* Review Section */}
+                <section id="reviews" className="py-24 bg-white relative">
+                    <div className="max-w-7xl mx-auto px-6 md:px-10">
+                        <div className="text-center max-w-3xl mx-auto mb-16">
+                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 uppercase tracking-tight">Ulasan <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Pengunjung</span></h2>
+                            <p className="text-lg md:text-xl text-gray-600 font-medium">Bagaimana pengalaman mereka mengunjungi Bantimurung?</p>
+                        </div>
 
+                        <div className="grid md:grid-cols-2 gap-12 items-start">
+                            {/* Render Reviews */}
+                            <div className="space-y-6">
+                                {reviews.length > 0 ? reviews.map((rev) => (
+                                    <div key={rev.id} className="bg-slate-50 p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-12 h-12 bg-red-100 text-red-800 rounded-full flex items-center justify-center font-bold text-xl uppercase">
+                                                {rev.user.nama.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-gray-900">{rev.user.nama}</h4>
+                                                <div className="flex text-yellow-400 text-sm">
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <Star key={i} className={`w-4 h-4 ${i < rev.rating ? 'fill-current' : 'text-gray-300'}`} />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-700 italic">"{rev.komentar}"</p>
+                                    </div>
+                                )) : (
+                                    <div className="text-center p-8 bg-slate-50 rounded-3xl border border-slate-100">
+                                        <MessageCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                                        <p className="text-gray-500 font-medium">Belum ada ulasan. Jadilah yang pertama!</p>
+                                    </div>
+                                )}
+                            </div>
 
-            {/* Footer */}
+                            {/* Add Review Form */}
+                            <div className="bg-white p-8 rounded-[40px] shadow-2xl border border-red-50/50 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-bl-full -z-10"></div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-6">Tinggalkan Ulasan</h3>
+                                {auth.user ? (
+                                    <form onSubmit={submitReview} className="space-y-6">
+                                        <div>
+                                            <label className="block text-sm font-bold text-gray-700 mb-2">Rating</label>
+                                            <div className="flex gap-2">
+                                                {[1, 2, 3, 4, 5].map((star) => (
+                                                    <button
+                                                        key={star}
+                                                        type="button"
+                                                        onClick={() => setRating(star)}
+                                                        className="focus:outline-none transition-transform hover:scale-110"
+                                                    >
+                                                        <Star className={`w-8 h-8 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="komentar" className="block text-sm font-bold text-gray-700 mb-2">Komentar Anda</label>
+                                            <textarea
+                                                id="komentar"
+                                                rows={4}
+                                                className="w-full rounded-2xl border-gray-200 text-gray-900 bg-white shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 transition-shadow resize-none"
+                                                placeholder="Ceritakan pengalaman Anda..."
+                                                value={komentar}
+                                                onChange={(e) => setKomentar(e.target.value)}
+                                                required
+                                            ></textarea>
+                                        </div>
+                                        <Button
+                                            type="submit"
+                                            disabled={reviewLoading || !komentar.trim()}
+                                            className="w-full bg-red-700 hover:bg-red-800 text-white rounded-2xl py-6 text-lg font-bold shadow-lg shadow-red-700/20"
+                                        >
+                                            {reviewLoading ? 'Mengirim...' : 'Kirim Ulasan'}
+                                        </Button>
+                                    </form>
+                                ) : (
+                                    <div className="text-center py-8">
+                                        <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <User className="w-8 h-8 text-red-600" />
+                                        </div>
+                                        <p className="text-gray-600 mb-6 font-medium">Anda harus login untuk memberikan ulasan.</p>
+                                        <Link href="/login">
+                                            <Button className="bg-red-700 hover:bg-red-800 text-white rounded-2xl py-6 px-8 text-lg font-bold shadow-lg shadow-red-700/20">
+                                                Login Sekarang
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>            {/* Footer */}
             <footer className="bg-gray-900 text-gray-400 py-16 border-t-8 border-red-800">
                 <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-16 items-start">
                     <div className="space-y-8 text-center md:text-left">

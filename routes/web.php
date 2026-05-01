@@ -14,6 +14,7 @@ Route::get('/', function () {
     return Inertia::render('welcome', [
         'canRegister' => Features::enabled(Features::registration()),
         'tikets' => \App\Models\Tiket::all(),
+        'reviews' => \App\Models\Review::with('user')->latest()->take(5)->get(),
     ]);
 })->name('home');
 
@@ -23,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('tickets/scan', [TicketController::class, 'index'])->name('tickets.scan.view');
     Route::post('tickets/scan', [TicketController::class, 'scan'])->name('tickets.scan');
+    Route::post('reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
 
     // Booking
     Route::get('booking', [BookingController::class, 'index'])->name('booking.index');
