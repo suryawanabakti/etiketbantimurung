@@ -235,6 +235,7 @@ export default function Welcome({
                     <div className="md:hidden absolute top-full left-4 right-4 bg-white rounded-[32px] shadow-2xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-4 duration-300 mt-2 border border-slate-100">
                         <a href="#home" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Beranda</a>
                         <a href="#features" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Fitur</a>
+                        <a href="#reviews" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Ulasan</a>
                         <button onClick={() => { setMobileMenuOpen(false); scrollToTickets(); }} className="p-4 font-black text-slate-900 border-b border-slate-50 text-left uppercase tracking-widest text-sm">Tiket</button>
                         <a href="#contact" className="p-4 font-black text-slate-900 border-b border-slate-50 uppercase tracking-widest text-sm" onClick={() => setMobileMenuOpen(false)}>Kontak</a>
                         {auth.user ? (
