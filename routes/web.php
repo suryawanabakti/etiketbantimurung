@@ -15,6 +15,8 @@ Route::get('/', function () {
         'canRegister' => Features::enabled(Features::registration()),
         'tikets' => \App\Models\Tiket::all(),
         'reviews' => \App\Models\Review::with('user')->latest()->take(5)->get(),
+        'totalReviews' => \App\Models\Review::count(),
+        'averageRating' => \App\Models\Review::avg('rating') ?: 0,
     ]);
 })->name('home');
 

@@ -41,10 +41,14 @@ export default function Welcome({
     canRegister = true,
     tikets = [],
     reviews = [],
+    totalReviews = 0,
+    averageRating = 0,
 }: {
     canRegister?: boolean;
     tikets?: Tiket[];
     reviews?: Review[];
+    totalReviews?: number;
+    averageRating?: number;
 }) {
     const { auth, flash } = usePage<SharedData>().props as any;
     const [isScrolled, setIsScrolled] = useState(false);
@@ -499,6 +503,23 @@ export default function Welcome({
                         <div className="text-center max-w-3xl mx-auto mb-16">
                             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 uppercase tracking-tight">Ulasan <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Pengunjung</span></h2>
                             <p className="text-lg md:text-xl text-gray-600 font-medium">Bagaimana pengalaman mereka mengunjungi Bantimurung?</p>
+                            
+                            {totalReviews > 0 && (
+                                <div className="mt-8 flex items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                                    <div className="flex items-center gap-2">
+                                        <Star className="w-10 h-10 fill-yellow-400 text-yellow-400" />
+                                        <span className="text-5xl font-black text-gray-900 tracking-tighter">
+                                            {Number(averageRating).toFixed(1)}
+                                        </span>
+                                        <span className="text-2xl text-gray-400 font-bold mt-3">/ 5.0</span>
+                                    </div>
+                                    <div className="h-12 w-1 bg-slate-200 rounded-full"></div>
+                                    <div className="text-left">
+                                        <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Total Ulasan</p>
+                                        <p className="text-2xl font-black text-slate-900">{totalReviews} <span className="text-lg text-slate-500 font-medium">Pengunjung</span></p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 items-start">

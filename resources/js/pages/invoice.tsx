@@ -2,6 +2,7 @@ import { Head, router } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Printer, Download, ArrowLeft, Ticket, Calendar, User, CreditCard, ShieldCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import AppLogo from '@/components/app-logo';
 
 interface Props {
     pemesanan: any;
@@ -69,8 +70,8 @@ export default function Invoice({ pemesanan }: Props) {
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent opacity-50" />
 
                     <div className="relative z-10 mb-8">
-                        <div className="bg-rose-600 p-4 rounded-[32px] inline-flex mb-6 shadow-2xl shadow-rose-900/40">
-                            <Ticket className="w-8 h-8" />
+                        <div className=" p-4 rounded-[32px] inline-flex mb-6 shadow-2xl shadow-rose-900/40">
+                            <img src='/logo.png' className='w-18 h-18' />
                         </div>
                         <h2 className="text-2xl font-black tracking-tighter uppercase italic leading-none">E-Tiket <br /><span className="text-rose-500">Bantimurung</span></h2>
                     </div>
