@@ -168,6 +168,7 @@ export default function Welcome({
                         <div className="flex items-center gap-6 lg:gap-8 text-sm font-medium text-white/90">
                             <a href="#features" className="hover:text-white transition-colors">Fitur</a>
                             <a href="#tickets" className="hover:text-white transition-colors">Tiket</a>
+                            <a href="#reviews" className="hover:text-white transition-colors">Ulasan</a>
                             <a href="#about" className="hover:text-white transition-colors">Tentang</a>
                             <a href="#contact" className="hover:text-white transition-colors">Kontak</a>
                         </div>
@@ -503,7 +504,7 @@ export default function Welcome({
                         <div className="text-center max-w-3xl mx-auto mb-16">
                             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 uppercase tracking-tight">Ulasan <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Pengunjung</span></h2>
                             <p className="text-lg md:text-xl text-gray-600 font-medium">Bagaimana pengalaman mereka mengunjungi Bantimurung?</p>
-                            
+
                             {totalReviews > 0 && (
                                 <div className="mt-8 flex items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
                                     <div className="flex items-center gap-2">
