@@ -30,7 +30,7 @@ export default function Login({
             <div className="hidden md:flex md:w-1/2 bg-slate-900 relative p-12 flex-col justify-between overflow-hidden">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop"
+                        src="/login.jpeg"
                         alt="Bantimurung"
                         className="w-full h-full object-cover opacity-30 scale-110"
                     />

@@ -18,7 +18,7 @@ export default function Register() {
             <div className="hidden md:flex md:w-1/2 bg-slate-900 relative p-12 flex-col justify-between overflow-hidden">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1582103287241-2762adba6c36?q=80&w=1974&auto=format&fit=crop"
+                        src="/register.jpeg"
                         alt="Bantimurung Nature"
                         className="w-full h-full object-cover opacity-40 scale-105"
                     />
