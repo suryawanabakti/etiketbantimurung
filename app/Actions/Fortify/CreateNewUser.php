@@ -28,6 +28,7 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'no_hp' => ['required', 'string', 'max:20'],
+            'alamat' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
         ])->validate();
 
@@ -35,6 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'nama' => $input['nama'],
             'email' => $input['email'],
             'no_hp' => $input['no_hp'],
+            'alamat' => $input['alamat'],
             'password' => $input['password'],
             'role' => 'pengunjung',
             'tanggal_daftar' => now(),

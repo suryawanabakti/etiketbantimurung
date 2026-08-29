@@ -7,7 +7,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { home, login } from '@/routes';
 import { store } from '@/routes/register';
 import { Form, Head, Link } from '@inertiajs/react';
-import { Ticket, ArrowLeft, UserPlus, Mail, Lock, User, Phone } from 'lucide-react';
+import { Ticket, ArrowLeft, UserPlus, Mail, Lock, User, Phone, MapPin } from 'lucide-react';
 
 export default function Register() {
     return (
@@ -128,6 +128,25 @@ export default function Register() {
                                     </div>
 
                                     <div className="space-y-2">
+                                        <Label htmlFor="alamat">Alamat Lengkap</Label>
+                                        <div className="relative">
+                                            <div className="absolute left-3 top-3 text-muted-foreground">
+                                                <MapPin className="w-4 h-4" />
+                                            </div>
+                                            <Input
+                                                id="alamat"
+                                                type="text"
+                                                name="alamat"
+                                                required
+                                                tabIndex={4}
+                                                placeholder="Contoh: Jl. Poros Maros-Pangkep No. 12"
+                                                className="pl-9"
+                                            />
+                                        </div>
+                                        <InputError message={errors.alamat} />
+                                    </div>
+
+                                    <div className="space-y-2">
                                         <Label htmlFor="password">Password</Label>
                                         <div className="relative">
                                             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -138,7 +157,7 @@ export default function Register() {
                                                 type="password"
                                                 name="password"
                                                 required
-                                                tabIndex={4}
+                                                tabIndex={5}
                                                 autoComplete="new-password"
                                                 placeholder="••••••••"
                                                 className="pl-9"
@@ -158,7 +177,7 @@ export default function Register() {
                                                 type="password"
                                                 name="password_confirmation"
                                                 required
-                                                tabIndex={5}
+                                                tabIndex={6}
                                                 autoComplete="new-password"
                                                 placeholder="••••••••"
                                                 className="pl-9"
@@ -170,7 +189,7 @@ export default function Register() {
                                     <Button
                                         type="submit"
                                         className="w-full mt-2"
-                                        tabIndex={6}
+                                        tabIndex={7}
                                         disabled={processing}
                                     >
                                         {processing && <Spinner className="mr-2 h-4 w-4" />}
@@ -183,7 +202,7 @@ export default function Register() {
                                     <Link
                                         href={login()}
                                         className="font-medium text-primary hover:underline"
-                                        tabIndex={6}
+                                        tabIndex={7}
                                     >
                                         Masuk
                                     </Link>
